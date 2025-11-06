@@ -475,15 +475,15 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-[#FAFFF7] flex">
+    <div className="min-h-screen bg-background-light flex">
       <aside className="w-60 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#7CB342]">Content Hive</h1>
+              <h1 className="text-lg font-bold text-primary-dark">Content Hive</h1>
               <p className="text-xs text-gray-500">AI Content Creator</p>
             </div>
           </div>
@@ -493,7 +493,7 @@ function App() {
             onClick={() => setCurrentView('generator')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
               currentView === 'generator'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
+                ? 'bg-primary text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -504,7 +504,7 @@ function App() {
             onClick={() => setCurrentView('schedule')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
               currentView === 'schedule'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
+                ? 'bg-primary text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -515,7 +515,7 @@ function App() {
             onClick={() => setCurrentView('strategy')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
               currentView === 'strategy'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
+                ? 'bg-primary text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -526,7 +526,7 @@ function App() {
             onClick={() => setCurrentView('video')}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
               currentView === 'video'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
+                ? 'bg-primary text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -544,10 +544,10 @@ function App() {
         {currentView === 'generator' ? (
           <>
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-2xl mb-4 shadow-lg">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-2xl mb-4 shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-4xl font-bold text-[#7CB342] mb-2">Content Hive</h2>
+              <h2 className="text-4xl font-bold text-primary-dark mb-2">Content Hive</h2>
               <p className="text-gray-600">Create buzz-worthy content with AI</p>
             </div>
             <StepNavigator
@@ -668,7 +668,7 @@ function App() {
         ) : currentView === 'schedule' ? (
           <>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#7CB342] mb-2">Schedule & Alarms</h2>
+              <h2 className="text-3xl font-bold text-primary-dark mb-2">Schedule & Alarms</h2>
               <p className="text-gray-600">Manage your content calendar and set reminders</p>
             </div>
             <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
@@ -751,7 +751,7 @@ function App() {
         ) : currentView === 'strategy' ? (
           <>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#7CB342] mb-2">AI Content Strategy</h2>
+              <h2 className="text-3xl font-bold text-primary-dark mb-2">AI Content Strategy</h2>
               <p className="text-gray-600">Plan your content calendar with AI-powered recommendations</p>
             </div>
 
@@ -763,7 +763,7 @@ function App() {
         ) : currentView === 'video' ? (
           <>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#7CB342] mb-2">Video Optimization Tips</h2>
+              <h2 className="text-3xl font-bold text-primary-dark mb-2">Video Optimization Tips</h2>
               <p className="text-gray-600">Learn best practices for creating engaging video content</p>
             </div>
 

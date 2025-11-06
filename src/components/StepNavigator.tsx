@@ -31,7 +31,7 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all ${
                   currentStep === step.number
-                    ? 'bg-gradient-to-br from-[#7CB342] to-[#4CAF50] text-white shadow-lg'
+                    ? 'bg-primary text-white shadow-lg'
                     : currentStep > step.number
                     ? 'bg-gray-200 text-gray-500'
                     : 'bg-gray-100 text-gray-400'
