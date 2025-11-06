@@ -62,7 +62,7 @@ export function VideoOptimizationTips() {
             <ul className="space-y-3">
               {getVideoOptimizationTips(expandedPlatform).map((tip, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-[#7CB342] flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-gray-700 leading-relaxed">{tip}</span>
                 </li>
               ))}

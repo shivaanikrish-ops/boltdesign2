@@ -7,7 +7,7 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background: #F4F8FA;
+    background: #FAFFF7;
     color: #3C3C3C;
     position: relative;
   }
@@ -15,7 +15,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    color: #064B64;
+    color: #222222;
   }
 }
 

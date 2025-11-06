@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Lightbulb, Calendar, Zap, Plus } from 'lucide-react';
 
 interface ContentStrategySectionProps {
@@ -11,7 +12,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
               <Calendar className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -22,20 +23,20 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
 
           <div className="space-y-3 mb-6">
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-primary-dark font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-green-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">AI-powered posting frequency recommendations</p>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-primary-dark font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-green-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">Content ideas based on your brand profile</p>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-primary-dark font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-green-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">Multi-week content calendar generation</p>
             </div>
@@ -43,7 +44,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
 
           <button
             onClick={onOpenPlanGenerator}
-            className="w-full py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
           >
             <Plus className="w-5 h-5" />
             Generate Content Plan
@@ -52,7 +53,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
 
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#42A5F5] to-[#1976D2] rounded-xl flex items-center justify-center">
               <Zap className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -63,20 +64,20 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
 
           <div className="space-y-3 mb-6">
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-accent-light font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-blue-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">Set up daily, weekly, or monthly schedules</p>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-accent-light font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-blue-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">Automatic recurring post generation</p>
             </div>
             <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-accent-light font-bold">✓</span>
+              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-xs text-blue-600 font-bold">✓</span>
               </div>
               <p className="text-sm text-gray-700">Flexible date ranges and repetition patterns</p>
             </div>
@@ -84,7 +85,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
 
           <button
             onClick={onOpenSmartPlanner}
-            className="w-full py-3 bg-accent hover:bg-accent-light text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            className="w-full py-3 bg-gradient-to-r from-[#42A5F5] to-[#1976D2] text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
           >
             <Plus className="w-5 h-5" />
             Create Smart Schedule
@@ -95,7 +96,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
       <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-6 border border-blue-200">
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
-            <Lightbulb className="w-5 h-5 text-primary" />
+            <Lightbulb className="w-5 h-5 text-[#7CB342]" />
           </div>
           <div>
             <h4 className="text-lg font-bold text-gray-900 mb-2">Pro Tip: Consistency is Key</h4>
@@ -104,15 +105,15 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
             </p>
             <ul className="mt-3 space-y-2">
               <li className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary font-bold">•</span>
+                <span className="text-[#7CB342] font-bold">•</span>
                 <span>Find the optimal posting frequency for your audience</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary font-bold">•</span>
+                <span className="text-[#7CB342] font-bold">•</span>
                 <span>Generate content ideas when you're running low on inspiration</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-primary font-bold">•</span>
+                <span className="text-[#7CB342] font-bold">•</span>
                 <span>Automate repetitive posts to save time and maintain consistency</span>
               </li>
             </ul>

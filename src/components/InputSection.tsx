@@ -95,7 +95,7 @@ export function InputSection({ onGenerate, isGenerating }: InputSectionProps) {
   return (
     <div className="card-float p-8 mb-8 animate-fade-in">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 bg-primary rounded-[20px] flex items-center justify-center shadow-md">
+        <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-[20px] flex items-center justify-center shadow-md">
           <Sparkles className="w-6 h-6 text-white" />
         </div>
         <h2 className="text-2xl font-bold text-[#3C3C3C]">Create New Content</h2>
@@ -204,7 +204,7 @@ export function InputSection({ onGenerate, isGenerating }: InputSectionProps) {
         <button
           onClick={handleGenerate}
           disabled={!companyName.trim() || !productName.trim() || !description.trim() || isGenerating}
-          className="w-full py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all"
+          className="w-full py-4 text-base font-semibold text-white bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] rounded-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all"
         >
           {isGenerating ? (
             <span className="flex items-center justify-center gap-2">

@@ -90,7 +90,7 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Clock className="w-5 h-5 text-primary" />
+        <Clock className="w-5 h-5 text-[#7CB342]" />
         <h3 className="text-lg font-bold text-gray-900">
           {selectedDate ? `Posts for ${formatDate(selectedDate.toISOString())}` : 'All Scheduled Posts'}
         </h3>
