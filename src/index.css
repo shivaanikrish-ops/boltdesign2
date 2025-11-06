@@ -184,6 +184,49 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
+
+  .bee-trail {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .bee-icon {
+    offset-path: path('M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80');
+    animation: flyBee 8s ease-in-out infinite;
+  }
+
+  .bee-dot {
+    offset-path: path('M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80');
+    animation: flyBee 8s ease-in-out infinite;
+  }
+
+  .bee-dot:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+
+  .bee-dot:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes flyBee {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
 }
 
 @keyframes btnBounce {

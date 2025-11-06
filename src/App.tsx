@@ -476,7 +476,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFFF7] flex">
-      <aside className="w-60 bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass">
+      <aside className="w-60 bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass relative overflow-hidden">
         <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg">
@@ -534,10 +534,27 @@ function App() {
             <span className="font-semibold text-[#FFD54F]">Video Tips</span>
           </button>
         </nav>
-        <div className="p-6 border-t border-gray-200/50">
+        <div className="p-6 border-t border-gray-200/50 relative">
           <div className="glass-badge text-center py-3 px-4 rounded-xl">
             <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
           </div>
+          <svg className="bee-trail" width="240" height="500" viewBox="0 0 240 500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="beePath" d="M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80" fill="none" />
+            </defs>
+            <g className="bee-container">
+              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" />
+              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" style={{animationDelay: '0.3s'}} />
+              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" style={{animationDelay: '0.6s'}} />
+              <g className="bee-icon">
+                <ellipse cx="0" cy="0" rx="4" ry="5" fill="#FFD54F" />
+                <ellipse cx="0" cy="-2" rx="3.5" ry="2" fill="#000" opacity="0.8" />
+                <ellipse cx="0" cy="2" rx="3.5" ry="2" fill="#000" opacity="0.8" />
+                <path d="M -4 -1 L -7 -3" stroke="#fff" strokeWidth="0.8" opacity="0.7" />
+                <path d="M 4 -1 L 7 -3" stroke="#fff" strokeWidth="0.8" opacity="0.7" />
+              </g>
+            </g>
+          </svg>
         </div>
       </aside>
       <main className="flex-1 overflow-auto">
