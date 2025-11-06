@@ -538,21 +538,24 @@ function App() {
           <div className="glass-badge text-center py-3 px-4 rounded-xl">
             <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
           </div>
-          <svg className="bee-trail" width="240" height="500" viewBox="0 0 240 500" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <path id="beePath" d="M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80" fill="none" />
-            </defs>
-            <g className="bee-container">
-              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" />
-              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" style={{animationDelay: '0.3s'}} />
-              <circle cx="0" cy="0" r="1.5" fill="#FFD54F" opacity="0.4" className="bee-dot" style={{animationDelay: '0.6s'}} />
-              <g className="bee-icon">
-                <ellipse cx="0" cy="0" rx="4" ry="5" fill="#FFD54F" />
-                <ellipse cx="0" cy="-2" rx="3.5" ry="2" fill="#000" opacity="0.8" />
-                <ellipse cx="0" cy="2" rx="3.5" ry="2" fill="#000" opacity="0.8" />
-                <path d="M -4 -1 L -7 -3" stroke="#fff" strokeWidth="0.8" opacity="0.7" />
-                <path d="M 4 -1 L 7 -3" stroke="#fff" strokeWidth="0.8" opacity="0.7" />
+          <svg className="bee-decoration" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(40, 40)">
+              <g className="bee-wing-left">
+                <ellipse cx="-12" cy="-8" rx="10" ry="6" fill="#fff" opacity="0.6" stroke="#FFD54F" strokeWidth="1" />
               </g>
+              <g className="bee-wing-right">
+                <ellipse cx="12" cy="-8" rx="10" ry="6" fill="#fff" opacity="0.6" stroke="#FFD54F" strokeWidth="1" />
+              </g>
+              <ellipse cx="0" cy="0" rx="10" ry="14" fill="#FFD54F" />
+              <ellipse cx="0" cy="-6" rx="9" ry="4" fill="#000" opacity="0.8" />
+              <ellipse cx="0" cy="2" rx="9" ry="4" fill="#000" opacity="0.8" />
+              <ellipse cx="0" cy="10" rx="8" ry="3.5" fill="#000" opacity="0.8" />
+              <circle cx="-4" cy="-12" r="2" fill="#000" />
+              <circle cx="4" cy="-12" r="2" fill="#000" />
+              <circle cx="-4" cy="-12" r="0.8" fill="#fff" />
+              <circle cx="4" cy="-12" r="0.8" fill="#fff" />
+              <path d="M -3 -18 Q -3 -22, -1 -22" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <path d="M 3 -18 Q 3 -22, 1 -22" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" />
             </g>
           </svg>
         </div>

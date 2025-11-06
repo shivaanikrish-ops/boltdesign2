@@ -185,46 +185,40 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
-  .bee-trail {
+  .bee-decoration {
     position: absolute;
-    bottom: 60px;
-    left: 0;
+    bottom: -20px;
+    left: -10px;
     pointer-events: none;
     z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 
-  .bee-icon {
-    offset-path: path('M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80');
-    animation: flyBee 8s ease-in-out infinite;
+  .bee-wing-left {
+    transform-origin: 28px 32px;
+    animation: flapWingLeft 0.3s ease-in-out infinite;
   }
 
-  .bee-dot {
-    offset-path: path('M 20 480 Q 40 400, 60 350 Q 80 300, 100 250 Q 120 200, 140 150 Q 160 100, 180 80');
-    animation: flyBee 8s ease-in-out infinite;
+  .bee-wing-right {
+    transform-origin: 52px 32px;
+    animation: flapWingRight 0.3s ease-in-out infinite;
   }
 
-  .bee-dot:nth-child(1) {
-    animation-delay: 0.3s;
-  }
-
-  .bee-dot:nth-child(2) {
-    animation-delay: 0.6s;
-  }
-
-  @keyframes flyBee {
-    0% {
-      offset-distance: 0%;
-      opacity: 0;
+  @keyframes flapWingLeft {
+    0%, 100% {
+      transform: rotate(-5deg);
     }
-    10% {
-      opacity: 1;
+    50% {
+      transform: rotate(-25deg);
     }
-    90% {
-      opacity: 1;
+  }
+
+  @keyframes flapWingRight {
+    0%, 100% {
+      transform: rotate(5deg);
     }
-    100% {
-      offset-distance: 100%;
-      opacity: 0;
+    50% {
+      transform: rotate(25deg);
     }
   }
 }
