@@ -7,15 +7,17 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    background: #FAFFF7;
+    background: linear-gradient(135deg, #FAFFF7 0%, #E8F5E9 50%, #E3F2FD 100%);
     color: #3C3C3C;
     position: relative;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #222222;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -35,14 +37,16 @@
   }
 
   .card-float {
-    @apply bg-white rounded-[16px] transition-all duration-300 relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    @apply bg-white/80 rounded-[20px] transition-all duration-300 relative;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.1);
     z-index: 1;
   }
 
   .card-float:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(124, 179, 66, 0.2);
+    transform: translateY(-4px) scale(1.01);
   }
 
   .btn-primary {
@@ -143,6 +147,42 @@
 
   .step-circle.completed {
     @apply bg-[#196E7F] text-white border-[#196E7F];
+  }
+
+  .sidebar-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-button-active {
+    background: linear-gradient(135deg, rgba(124, 179, 66, 0.15) 0%, rgba(66, 165, 245, 0.15) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(124, 179, 66, 0.3);
+    box-shadow: 0 8px 24px rgba(124, 179, 66, 0.2), inset 0 0 20px rgba(124, 179, 66, 0.1);
+  }
+
+  .glass-badge {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 }
 

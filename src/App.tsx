@@ -476,66 +476,68 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFFF7] flex">
-      <aside className="w-60 bg-white border-r border-gray-200 flex flex-col">
-        <div className="p-6 border-b border-gray-200">
+      <aside className="w-60 bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass">
+        <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg">
+              <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-[#7CB342]">Content Hive</h1>
-              <p className="text-xs text-gray-500">AI Content Creator</p>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Content Hive</h1>
+              <p className="text-xs text-gray-500 font-medium">AI Content Creator</p>
             </div>
           </div>
         </div>
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-6 space-y-4">
           <button
             onClick={() => setCurrentView('generator')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
+            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'generator'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100'
+                ? 'glass-button-active shadow-lg'
+                : 'glass-button'
             }`}
           >
             <Sparkles className="w-5 h-5" />
-            <span className="font-medium">Content Generator</span>
+            <span className="font-semibold text-[#7CB342]">Content Generator</span>
           </button>
           <button
             onClick={() => setCurrentView('schedule')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
+            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'schedule'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100'
+                ? 'glass-button-active shadow-lg'
+                : 'glass-button'
             }`}
           >
             <CalendarDays className="w-5 h-5" />
-            <span className="font-medium">Schedule & Alarms</span>
+            <span className="font-semibold text-[#FFD54F]">Schedule & Alarms</span>
           </button>
           <button
             onClick={() => setCurrentView('strategy')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
+            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'strategy'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100'
+                ? 'glass-button-active shadow-lg'
+                : 'glass-button'
             }`}
           >
             <Lightbulb className="w-5 h-5" />
-            <span className="font-medium">AI Content Strategy</span>
+            <span className="font-semibold text-[#7CB342]">AI Content Strategy</span>
           </button>
           <button
             onClick={() => setCurrentView('video')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 transition-all ${
+            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'video'
-                ? 'bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white shadow-md'
-                : 'text-gray-700 hover:bg-gray-100'
+                ? 'glass-button-active shadow-lg'
+                : 'glass-button'
             }`}
           >
             <Video className="w-5 h-5" />
-            <span className="font-medium">Video Tips</span>
+            <span className="font-semibold text-[#FFD54F]">Video Tips</span>
           </button>
         </nav>
-        <div className="p-4 border-t border-gray-200">
-          <p className="text-xs text-gray-400 text-center">Powered by AI</p>
+        <div className="p-6 border-t border-gray-200/50">
+          <div className="glass-badge text-center py-3 px-4 rounded-xl">
+            <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
+          </div>
         </div>
       </aside>
       <main className="flex-1 overflow-auto">
