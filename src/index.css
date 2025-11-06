@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAFFF7;
+    color: #3C3C3C;
+    position: relative;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #222222;
+  }
+}
+
+@layer components {
+  .input-orange {
+    @apply bg-white border-[1.5px] border-[#196E7F] text-gray-900 rounded-2xl px-4 py-3
+           focus:outline-none focus:ring-0 focus:border-[#196E7F] transition-all duration-300;
+    box-shadow: 0 0 0 0 rgba(25, 110, 127, 0);
+  }
+
+  .input-orange:focus {
+    box-shadow: 0 0 6px rgba(25, 110, 127, 0.7);
+  }
+
+  .input-orange::placeholder {
+    color: #999999;
+  }
+
+  .card-float {
+    @apply bg-white rounded-[16px] transition-all duration-300 relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    z-index: 1;
+  }
+
+  .card-float:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply bg-[#196E7F] text-white font-bold rounded-2xl px-6 py-3
+           transition-all duration-300 hover:bg-[#145664] uppercase text-sm tracking-wide;
+  }
+
+  .btn-primary:active {
+    animation: btnBounce 0.3s ease;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-[#3C3C3C] font-medium rounded-lg px-5 py-2.5
+           transition-all duration-300 hover:bg-gray-50 text-sm;
+    border: none;
+  }
+
+  .btn-schedule {
+    @apply bg-[#196E7F] text-white font-bold rounded-2xl px-6 py-3
+           transition-all duration-300 uppercase text-sm tracking-wide;
+  }
+
+  .btn-schedule:hover {
+    box-shadow: 0 0 15px rgba(25, 110, 127, 0.6);
+  }
+
+  .btn-schedule:active {
+    animation: scheduleFlash 0.5s ease;
+    transform: scale(1.1);
+  }
+
+  .accent-highlight {
+    @apply border-l-4 border-[#196E7F] pl-4;
+  }
+
+  .suggestion-card {
+    @apply bg-white rounded-[16px] border border-transparent p-5 cursor-pointer
+           transition-all duration-300 relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .suggestion-card:hover {
+    border-color: #196E7F;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 0 0 1px #196E7F;
+  }
+
+  .suggestion-card.active {
+    border-color: #196E7F;
+    border-width: 2px;
+    box-shadow: 0 6px 20px rgba(25, 110, 127, 0.3), inset 0 0 20px rgba(25, 110, 127, 0.1);
+  }
+
+  .suggestion-card.inactive {
+    opacity: 0.7;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #FF8A00, #E52E71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-header-bg {
+    background: linear-gradient(135deg, #FFE5D9 0%, #E8D5FF 100%);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+  }
+
+  .workflow-step {
+    @apply bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4
+           transition-all duration-300 border border-transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .workflow-step:hover {
+    border-color: #A1C4FD;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(161, 196, 253, 0.3);
+  }
+
+  .workflow-step.completed {
+    @apply bg-gradient-to-br from-green-50 to-teal-50;
+    border-color: #10B981;
+  }
+
+  .step-circle {
+    @apply w-10 h-10 rounded-full border-2 border-[#196E7F] bg-white
+           flex items-center justify-center text-[#196E7F] font-bold text-base
+           transition-all duration-300 cursor-pointer hover:scale-110;
+  }
+
+  .step-circle.active {
+    @apply bg-[#196E7F] text-white border-[#196E7F];
+  }
+
+  .step-circle.completed {
+    @apply bg-[#196E7F] text-white border-[#196E7F];
+  }
+}
+
+@keyframes btnBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes scheduleFlash {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(25, 110, 127, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(25, 110, 127, 0.8);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes staggerFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-item {
+  animation: staggerFadeIn 0.4s ease-out;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.05s; }
+.stagger-item:nth-child(2) { animation-delay: 0.1s; }
+.stagger-item:nth-child(3) { animation-delay: 0.15s; }
+.stagger-item:nth-child(4) { animation-delay: 0.2s; }
+.stagger-item:nth-child(5) { animation-delay: 0.25s; }
+.stagger-item:nth-child(6) { animation-delay: 0.3s; }
+.stagger-item:nth-child(7) { animation-delay: 0.35s; }
+
+@keyframes confetti {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  100% { transform: translate(var(--x), var(--y)) rotate(360deg); opacity: 0; }
+}
+
+@keyframes checkBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.check-bounce {
+  animation: checkBounce 0.3s ease;
+}
