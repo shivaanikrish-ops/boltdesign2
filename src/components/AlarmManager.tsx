@@ -117,10 +117,6 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
         };
       }
     }
-
-    setTimeout(() => {
-      setRingingAlarm(null);
-    }, 5000);
   };
 
   const handleDismissRinging = (id: string) => {
