@@ -546,57 +546,10 @@ function App() {
           </button>
         </nav>
         {!sidebarCollapsed && (
-          <div className="p-6 border-t border-gray-200/50 relative">
+          <div className="p-6 border-t border-gray-200/50">
             <div className="glass-badge text-center py-3 px-4 rounded-xl">
               <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
             </div>
-          <svg className="bee-trail-decoration" width="240" height="600" viewBox="0 0 240 600" xmlns="http://www.w3.org/2000/svg">
-            <g className="bee-trail-path">
-              <circle cx="30" cy="560" r="3" fill="#FFD54F" opacity="0.3" className="trail-dot" />
-              <circle cx="50" cy="540" r="3" fill="#FFD54F" opacity="0.35" className="trail-dot" />
-              <circle cx="40" cy="520" r="3" fill="#FFD54F" opacity="0.4" className="trail-dot" />
-              <circle cx="60" cy="500" r="3" fill="#FFD54F" opacity="0.45" className="trail-dot" />
-              <circle cx="50" cy="480" r="3" fill="#FFD54F" opacity="0.5" className="trail-dot" />
-              <circle cx="70" cy="460" r="3" fill="#FFD54F" opacity="0.55" className="trail-dot" />
-              <circle cx="60" cy="440" r="3" fill="#FFD54F" opacity="0.6" className="trail-dot" />
-              <circle cx="80" cy="420" r="3" fill="#FFD54F" opacity="0.65" className="trail-dot" />
-              <circle cx="70" cy="400" r="3" fill="#FFD54F" opacity="0.7" className="trail-dot" />
-              <circle cx="90" cy="380" r="3" fill="#FFD54F" opacity="0.75" className="trail-dot" />
-              <circle cx="80" cy="360" r="3" fill="#FFD54F" opacity="0.8" className="trail-dot" />
-              <circle cx="100" cy="340" r="3" fill="#FFD54F" opacity="0.85" className="trail-dot" />
-              <circle cx="90" cy="320" r="3" fill="#FFD54F" opacity="0.9" className="trail-dot" />
-              <circle cx="110" cy="300" r="3" fill="#FFD54F" opacity="0.95" className="trail-dot" />
-              <circle cx="100" cy="280" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="120" cy="260" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="110" cy="240" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="130" cy="220" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="120" cy="200" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="140" cy="180" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="130" cy="160" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="150" cy="140" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="140" cy="120" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="160" cy="100" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-              <circle cx="150" cy="80" r="3" fill="#FFD54F" opacity="1" className="trail-dot" />
-            </g>
-            <g transform="translate(30, 570)" className="bee-body">
-              <g className="bee-wing-left">
-                <ellipse cx="-12" cy="-8" rx="10" ry="6" fill="#fff" opacity="0.6" stroke="#FFD54F" strokeWidth="1" />
-              </g>
-              <g className="bee-wing-right">
-                <ellipse cx="12" cy="-8" rx="10" ry="6" fill="#fff" opacity="0.6" stroke="#FFD54F" strokeWidth="1" />
-              </g>
-              <ellipse cx="0" cy="0" rx="10" ry="14" fill="#FFD54F" />
-              <ellipse cx="0" cy="-6" rx="9" ry="4" fill="#000" opacity="0.8" />
-              <ellipse cx="0" cy="2" rx="9" ry="4" fill="#000" opacity="0.8" />
-              <ellipse cx="0" cy="10" rx="8" ry="3.5" fill="#000" opacity="0.8" />
-              <circle cx="-4" cy="-12" r="2" fill="#000" />
-              <circle cx="4" cy="-12" r="2" fill="#000" />
-              <circle cx="-4" cy="-12" r="0.8" fill="#fff" />
-              <circle cx="4" cy="-12" r="0.8" fill="#fff" />
-              <path d="M -3 -18 Q -3 -22, -1 -22" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-              <path d="M 3 -18 Q 3 -22, 1 -22" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-            </g>
-          </svg>
           </div>
         )}
       </aside>
