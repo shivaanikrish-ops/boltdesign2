@@ -59,9 +59,10 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
           </div>
         ))}
       </div>
-      <div className="text-center mt-4">
-        <p className="text-sm font-medium bg-gradient-to-r from-[#7CB342] via-[#FFD54F] to-[#42A5F5] bg-clip-text text-transparent animate-pulse">
-          Press the numbers to navigate back or forth
+      <div className="text-center mt-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#7CB342] via-[#FFD54F] to-[#42A5F5] opacity-20 blur-xl rounded-full"></div>
+        <p className="relative text-lg font-black tracking-wide bg-gradient-to-r from-[#7CB342] via-[#FFD54F] to-[#42A5F5] bg-clip-text text-transparent animate-pulse drop-shadow-lg transform hover:scale-105 transition-transform">
+          ✨ PRESS THE NUMBERS TO NAVIGATE BACK OR FORTH ✨
         </p>
       </div>
     </div>
