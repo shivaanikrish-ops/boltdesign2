@@ -138,20 +138,20 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
   const days = view === 'month' ? getDaysInMonth(currentDate) : getWeekDays(currentDate);
 
   return (
-    <div className="bg-[#EEF3F4] rounded-2xl shadow-md p-6">
+    <div className="bg-[#EEF3F4] dark:bg-[#1B2433] rounded-2xl shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#99D852]">
             <CalendarIcon className="w-5 h-5 text-[#99D852]" />
           </div>
-          <h2 className="text-2xl font-bold text-[#3C3C3C]">Content Calendar</h2>
+          <h2 className="text-2xl font-bold text-[#3C3C3C] dark:text-white">Content Calendar</h2>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
             <button
               onClick={() => setView('month')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                view === 'month' ? 'bg-white text-gray-800 shadow-sm' : 'text-gray-600'
+                view === 'month' ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'
               }`}
             >
               Month
@@ -159,7 +159,7 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
             <button
               onClick={() => setView('week')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                view === 'week' ? 'bg-white text-gray-800 shadow-sm' : 'text-gray-600'
+                view === 'week' ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'
               }`}
             >
               Week

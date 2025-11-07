@@ -145,13 +145,13 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
   );
 
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6">
+    <div className="bg-white dark:bg-[#1B2433] rounded-2xl shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <Bell className="w-6 h-6 text-[#FFC107]" />
           <div>
-            <h2 className="text-xl font-bold text-gray-900">Alarms</h2>
-            <span className="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-gray-600 bg-gray-100 rounded-full ml-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Alarms</h2>
+            <span className="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-full ml-2">
               {activeAlarms.length}
             </span>
           </div>
@@ -170,8 +170,8 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
           <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
             <Bell className="w-16 h-16 text-gray-300" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">No active alarms</h3>
-          <p className="text-gray-500 text-sm">
+          <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-2">No active alarms</h3>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
             Add an alarm to get reminded about your posts
           </p>
         </div>
@@ -184,14 +184,14 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
                 key={alarm.id}
                 className={`border-2 rounded-xl p-4 transition-all ${
                   isPast
-                    ? 'border-red-300 bg-red-50'
-                    : 'border-gray-200 hover:border-orange-300 bg-white'
+                    ? 'border-red-300 bg-red-50 dark:bg-red-900/20 dark:border-red-500'
+                    : 'border-gray-200 hover:border-orange-300 bg-white dark:bg-[#263B4D] dark:border-gray-600'
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-2">
-                      <h3 className="font-bold text-gray-800 text-lg truncate">
+                      <h3 className="font-bold text-gray-800 dark:text-white text-lg truncate">
                         {alarm.title}
                       </h3>
                       <div className="flex items-center gap-1">

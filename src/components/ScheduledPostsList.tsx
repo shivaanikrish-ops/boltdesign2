@@ -92,14 +92,14 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div className="bg-white dark:bg-[#1B2433] rounded-2xl shadow-md overflow-hidden">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+        className="w-full p-6 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
       >
         <div className="flex items-center gap-2">
           <Clock className="w-5 h-5 text-[#7CB342]" />
-          <h3 className="text-lg font-bold text-gray-900">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
             {selectedDate ? `Posts for ${formatDate(selectedDate.toISOString())}` : 'All Scheduled Posts'}
           </h3>
           <span className="px-2 py-1 bg-[#7CB342] text-white text-xs font-bold rounded-full">
@@ -132,7 +132,7 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
           return (
             <div
               key={post.id}
-              className="bg-white rounded-xl p-4 transition-all accent-highlight hover:shadow-lg"
+              className="bg-white dark:bg-[#263B4D] rounded-xl p-4 transition-all accent-highlight hover:shadow-lg"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
@@ -142,10 +142,10 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
                         type="text"
                         value={editedContent.title}
                         onChange={(e) => setEditedContent({ ...editedContent, title: e.target.value })}
-                        className="flex-1 font-semibold text-gray-800 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-[#7CB342]"
+                        className="flex-1 font-semibold text-gray-800 dark:text-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 focus:outline-none focus:border-[#7CB342]"
                       />
                     ) : (
-                      <h4 className="font-semibold text-gray-800 truncate">{post.title}</h4>
+                      <h4 className="font-semibold text-gray-800 dark:text-white truncate">{post.title}</h4>
                     )}
                     <span className={`px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${statusConfig[post.status].color}`}>
                       <StatusIcon className="w-3 h-3" />
