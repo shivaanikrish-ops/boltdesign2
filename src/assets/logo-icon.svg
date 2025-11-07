@@ -1,57 +1,30 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-3px); }
-    }
-    .animated { animation: float 2s ease-in-out infinite; }
-  </style>
+  <!-- Honey jar lid -->
+  <path d="M25 8 C25 8 25 6 26 5 L74 5 C75 6 75 8 75 8 L75 12 C75 13 74 14 73 14 L27 14 C26 14 25 13 25 12 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
 
-  <!-- Simple Jar -->
-  <g class="animated" transform="translate(25, 30)">
-    <!-- Lid -->
-    <rect x="0" y="0" width="25" height="5" rx="2" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
+  <!-- Jar opening -->
+  <path d="M23 14 C23 13 24 12 25 12 L75 12 C76 12 77 13 77 14 L77 18 C77 18 76 19 75 19 L25 19 C24 19 23 18 23 18 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
 
-    <!-- Jar outline -->
-    <path d="M2,5 L2,30 C2,32 4,34 6,34 L19,34 C21,34 23,32 23,30 L23,5"
-          fill="none" stroke="#7CB342" stroke-width="2"/>
+  <!-- Main jar body -->
+  <path d="M23 18 L26 22 C26 22 26 70 26 70 C26 73 28 75 31 75 L69 75 C72 75 74 73 74 70 L74 22 L77 18 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="2"/>
 
-    <!-- Honeycomb -->
-    <g transform="translate(12.5, 18)">
-      <path d="M0,-4 L3,-2 L3,2 L0,4 L-3,2 L-3,-2 Z" fill="#FFA726" stroke="#F57C00" stroke-width="1"/>
-      <path d="M0,-11 L3,-9 L3,-5 L0,-4 L-3,-5 L-3,-9 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="1"/>
-    </g>
+  <!-- Honey drip -->
+  <path d="M35 19 C35 19 34 21 34 22 C34 23 34 25 34 26 C34 27 36 28 37 28 C37 28 37 22 37 22" fill="#F9A825"/>
+
+  <!-- Honeycomb hexagons -->
+  <g transform="translate(50, 45) scale(0.6)">
+    <path d="M0,-10 L9,-5 L9,5 L0,10 L-9,5 L-9,-5 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
+    <path d="M0,-30 L9,-25 L9,-15 L0,-10 L-9,-15 L-9,-25 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
+    <path d="M-15,5 L-6,10 L-6,20 L-15,25 L-24,20 L-24,10 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
+    <path d="M15,5 L24,10 L24,20 L15,25 L6,20 L6,10 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
   </g>
 
-  <!-- Large Bee -->
-  <g class="animated" transform="translate(60, 35)" style="animation-delay: 0.2s">
-    <!-- Wings -->
-    <ellipse cx="-5" cy="-3" rx="10" ry="12" fill="#E3F2FD" stroke="#64B5F6" stroke-width="1.5" opacity="0.9" transform="rotate(-20 -5 -3)"/>
-    <ellipse cx="17" cy="-3" rx="10" ry="12" fill="#E3F2FD" stroke="#64B5F6" stroke-width="1.5" opacity="0.9" transform="rotate(20 17 -3)"/>
-
-    <!-- Body -->
-    <ellipse cx="6" cy="6" rx="12" ry="16" fill="#FFD54F"/>
-
-    <!-- Stripes -->
-    <rect x="-6" y="1" width="24" height="3" rx="1.5" fill="#3E2723"/>
-    <rect x="-6" y="9" width="24" height="3" rx="1.5" fill="#3E2723"/>
-
-    <!-- Head -->
-    <circle cx="6" cy="-8" r="8" fill="#FFA726"/>
-
-    <!-- Eyes -->
-    <circle cx="3" cy="-9" r="2" fill="#3E2723"/>
-    <circle cx="9" cy="-9" r="2" fill="#3E2723"/>
-    <circle cx="3" cy="-8.5" r="1" fill="white"/>
-    <circle cx="9" cy="-8.5" r="1" fill="white"/>
-
-    <!-- Smile -->
-    <path d="M3.5,-5 Q6,-3.5 8.5,-5" stroke="#3E2723" stroke-width="1" fill="none" stroke-linecap="round"/>
-
-    <!-- Antennae -->
-    <line x1="3" y1="-14" x2="1" y2="-18" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="1" cy="-19" r="1.5" fill="#3E2723"/>
-    <line x1="9" y1="-14" x2="11" y2="-18" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="11" cy="-19" r="1.5" fill="#3E2723"/>
+  <!-- Bee -->
+  <g transform="translate(72, 25)">
+    <ellipse cx="0" cy="0" rx="8" ry="10" fill="#FFA726"/>
+    <rect x="-8" y="-3" width="16" height="2" rx="1" fill="#5D4037"/>
+    <rect x="-8" y="2" width="16" height="2" rx="1" fill="#5D4037"/>
+    <ellipse cx="-5" cy="-6" rx="6" ry="8" fill="#FFE082" opacity="0.7" transform="rotate(-20 -5 -6)"/>
+    <ellipse cx="5" cy="-6" rx="6" ry="8" fill="#FFE082" opacity="0.7" transform="rotate(20 5 -6)"/>
   </g>
 </svg>
