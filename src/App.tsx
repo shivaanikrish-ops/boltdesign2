@@ -8,6 +8,7 @@ import { ExportSection } from './components/ExportSection';
 import { BrandProfileModal } from './components/BrandProfileModal';
 import { ContentHistory } from './components/ContentHistory';
 import { SavedContentModal } from './components/SavedContentModal';
+import { ContentPlansModal } from './components/ContentPlansModal';
 import { VisualSuggestions } from './components/VisualSuggestions';
 import { PostOutline } from './components/PostOutline';
 import { VideoOptimizationTips } from './components/VideoOptimizationTips';
@@ -48,6 +49,7 @@ function App() {
   const [currentView, setCurrentView] = useState<'generator' | 'schedule' | 'strategy' | 'video'>('generator');
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [showPlanGenerator, setShowPlanGenerator] = useState(false);
+  const [showContentPlansModal, setShowContentPlansModal] = useState(false);
   const [showSmartPlanner, setShowSmartPlanner] = useState(false);
   const [scheduledPosts, setScheduledPosts] = useState<ScheduledPost[]>([]);
   const [plannedPosts, setPlannedPosts] = useState<PlannedPost[]>([]);
@@ -564,15 +566,7 @@ function App() {
           </button>
 
           <button
-            onClick={() => {
-              setCurrentView('strategy');
-              setTimeout(() => {
-                const plansSection = document.getElementById('content-plans-section');
-                if (plansSection) {
-                  plansSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }, 100);
-            }}
+            onClick={() => setShowContentPlansModal(true)}
             className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 glass-button`}
             title={sidebarCollapsed ? 'Content Plans' : ''}
           >
@@ -891,6 +885,27 @@ function App() {
         savedContent={contentHistory}
         onLoadContent={handleLoadContent}
         onDeleteContent={handleDeleteContent}
+      />
+
+      <ContentPlansModal
+        isOpen={showContentPlansModal}
+        onClose={() => setShowContentPlansModal(false)}
+        contentPlans={contentPlans.map(plan => {
+          const planPosts = plannedPosts.filter(p => p.content_plan_id === plan.id);
+          return {
+            id: plan.id,
+            topics: planPosts.map(p => p.title),
+            schedule: planPosts.map(p => ({
+              date: new Date(p.suggested_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+              topic: p.title
+            })),
+            insights: [
+              `${plan.plan_name} - ${plan.frequency}`,
+              `${plan.total_posts} posts planned from ${new Date(plan.start_date).toLocaleDateString()} to ${new Date(plan.end_date).toLocaleDateString()}`,
+              `Status: ${plan.status}`
+            ]
+          };
+        })}
       />
     </div>
   );
