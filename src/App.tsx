@@ -85,7 +85,7 @@ function App() {
           const timeDiff = alarmTime.getTime() - now.getTime();
           console.log(`Alarm "${alarm.title}": timeDiff = ${timeDiff}ms`);
 
-          if (timeDiff <= 0 && timeDiff > -5000) {
+          if (timeDiff <= 0 && timeDiff > -2000) {
             console.log('ALARM TRIGGERED:', alarm.title, alarm);
             setTriggeredAlarms((prev) => new Set(prev).add(alarm.id));
             setRingingAlarm(alarm);
