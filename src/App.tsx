@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video, Lightbulb } from 'lucide-react';
+import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -7,6 +7,7 @@ import { PlatformPreviews } from './components/PlatformPreviews';
 import { ExportSection } from './components/ExportSection';
 import { BrandProfileModal } from './components/BrandProfileModal';
 import { ContentHistory } from './components/ContentHistory';
+import { SavedContentModal } from './components/SavedContentModal';
 import { VisualSuggestions } from './components/VisualSuggestions';
 import { PostOutline } from './components/PostOutline';
 import { VideoOptimizationTips } from './components/VideoOptimizationTips';
@@ -56,6 +57,8 @@ function App() {
   const [showAlarmModal, setShowAlarmModal] = useState(false);
   const [alarms, setAlarms] = useState<Alarm[]>([]);
   const [linkedPostForAlarm, setLinkedPostForAlarm] = useState<ScheduledPost | PlannedPost | undefined>();
+  const [showSavedContentModal, setShowSavedContentModal] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     loadBrandProfile();
@@ -629,6 +632,36 @@ function App() {
 
                     {postOutline && <PostOutline outline={postOutline} />}
 
+                    <div className="card-float p-6 mb-6">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-800 mb-1">Save Your Content</h3>
+                          <p className="text-sm text-gray-600">Save this generated content for future use</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <button
+                            onClick={() => setShowSavedContentModal(true)}
+                            className="btn-secondary flex items-center gap-2"
+                          >
+                            <FolderOpen className="w-5 h-5" />
+                            View Saved
+                          </button>
+                          <button
+                            onClick={async () => {
+                              setIsSaving(true);
+                              await saveContentToHistory(currentDescription, generatedContent, imageUrl, resizedImages);
+                              setIsSaving(false);
+                            }}
+                            disabled={isSaving}
+                            className="btn-primary flex items-center gap-2"
+                          >
+                            <Save className="w-5 h-5" />
+                            {isSaving ? 'Saving...' : 'Save Content'}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
                     <CaptionSelector content={generatedContent} onSelectTone={handleSelectTone} />
                     <HashtagDisplay
                       hashtags={generatedContent.hashtags}
@@ -834,6 +867,14 @@ function App() {
         }}
         onCreateAlarm={handleCreateAlarm}
         linkedPost={linkedPostForAlarm}
+      />
+
+      <SavedContentModal
+        isOpen={showSavedContentModal}
+        onClose={() => setShowSavedContentModal(false)}
+        savedContent={contentHistory}
+        onLoadContent={handleLoadContent}
+        onDeleteContent={handleDeleteContent}
       />
     </div>
   );
