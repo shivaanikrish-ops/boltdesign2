@@ -337,6 +337,20 @@ function App() {
     setEditingPost(post as ScheduledPost);
   };
 
+  const handleDeleteContentPlan = async (id: string) => {
+    await supabase
+      .from('planned_posts')
+      .delete()
+      .eq('content_plan_id', id);
+
+    await supabase
+      .from('content_plans')
+      .delete()
+      .eq('id', id);
+
+    loadContentPlans();
+  };
+
   const handleGenerateContentPlan = async (planData: {
     planName: string;
     startDate: string;
@@ -875,6 +889,7 @@ function App() {
       <ContentPlansModal
         isOpen={showContentPlansModal}
         onClose={() => setShowContentPlansModal(false)}
+        onDeletePlan={handleDeleteContentPlan}
         contentPlans={contentPlans.map(plan => {
           const planPosts = plannedPosts.filter(p => p.content_plan_id === plan.id);
           return {

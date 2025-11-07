@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Search, Calendar, FileText, Eye } from 'lucide-react';
+import { X, Search, Calendar, FileText, Trash2 } from 'lucide-react';
 
 interface ContentPlan {
   id: string;
@@ -15,9 +15,10 @@ interface ContentPlansModalProps {
   isOpen: boolean;
   onClose: () => void;
   contentPlans: ContentPlan[];
+  onDeletePlan: (id: string) => void;
 }
 
-export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlansModalProps) {
+export function ContentPlansModal({ isOpen, onClose, contentPlans, onDeletePlan }: ContentPlansModalProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   if (!isOpen) return null;
@@ -80,7 +81,7 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
                     <div className="w-10 h-10 bg-gradient-to-br from-[#42A5F5] to-[#7CB342] rounded-lg flex items-center justify-center flex-shrink-0">
                       <FileText className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <h4 className="text-lg font-bold text-gray-900 mb-4">Content Plan</h4>
 
                       <div className="mb-4">
@@ -126,6 +127,17 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
                         </div>
                       )}
                     </div>
+                    <button
+                      onClick={() => {
+                        if (confirm('Are you sure you want to delete this content plan? This will also delete all associated planned posts.')) {
+                          onDeletePlan(plan.id);
+                        }
+                      }}
+                      className="p-2 hover:bg-red-50 rounded-lg transition-colors group flex-shrink-0"
+                      title="Delete plan"
+                    >
+                      <Trash2 className="w-5 h-5 text-gray-400 group-hover:text-red-500" />
+                    </button>
                   </div>
                 </div>
               ))}
