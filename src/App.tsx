@@ -304,7 +304,7 @@ function App() {
     console.log('Post scheduled successfully');
     await loadScheduledPosts();
     setShowScheduleModal(false);
-    setShowScheduleView(true);
+    setCurrentView('schedule');
   };
 
   const handleDeleteScheduledPost = async (id: string) => {
@@ -373,13 +373,13 @@ function App() {
       }));
 
       await supabase.from('planned_posts').insert(plannedPostsData);
-      
+
       // Immediately update state so calendar reflects new planned posts
       setPlannedPosts((prev) => [...prev, ...planData.posts]);
 
-      
+
       await loadContentPlans();
-      setShowScheduleView(true);
+      setCurrentView('schedule');
     }
   };
 
@@ -413,12 +413,12 @@ function App() {
     }));
 
     await supabase.from('scheduled_posts').insert(scheduledPostsData);
-    
+
     // Immediately update state so calendar reflects new posts
     setScheduledPosts((prev) => [...prev, ...scheduledPostsData]);
 
     await loadScheduledPosts();
-    setShowScheduleView(true);
+    setCurrentView('schedule');
   };
 
   const getSelectedCaption = () => {
@@ -700,7 +700,7 @@ function App() {
                           </div>
                           <div className="flex gap-3">
                             <button
-                              onClick={() => setShowScheduleView(true)}
+                              onClick={() => setCurrentView('schedule')}
                               className="btn-secondary flex items-center gap-2"
                             >
                               <CalendarDays className="w-5 h-5" />
