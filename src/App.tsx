@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, FileText, Bell } from 'lucide-react';
 import logoIcon from './assets/logo-icon.svg';
 import logo from './assets/logo.svg';
@@ -66,6 +66,7 @@ function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [ringingAlarm, setRingingAlarm] = useState<Alarm | null>(null);
   const [triggeredAlarms, setTriggeredAlarms] = useState<Set<string>>(new Set());
+  const triggeredAlarmsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     loadBrandProfile();
@@ -80,13 +81,14 @@ function App() {
       const now = new Date();
       console.log('Checking alarms, total alarms:', alarms.length);
       alarms.forEach((alarm) => {
-        if (alarm.status === 'active' && !triggeredAlarms.has(alarm.id)) {
+        if (alarm.status === 'active' && !triggeredAlarmsRef.current.has(alarm.id)) {
           const alarmTime = new Date(alarm.alarm_datetime);
           const timeDiff = alarmTime.getTime() - now.getTime();
           console.log(`Alarm "${alarm.title}": timeDiff = ${timeDiff}ms`);
 
           if (timeDiff <= 0 && timeDiff > -2000) {
             console.log('ALARM TRIGGERED:', alarm.title, alarm);
+            triggeredAlarmsRef.current.add(alarm.id);
             setTriggeredAlarms((prev) => new Set(prev).add(alarm.id));
             setRingingAlarm(alarm);
 
