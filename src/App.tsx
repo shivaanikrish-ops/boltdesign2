@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video } from 'lucide-react';
+import { Sparkles, CalendarDays, Video, Lightbulb } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -13,12 +13,17 @@ import { VideoOptimizationTips } from './components/VideoOptimizationTips';
 import { Calendar } from './components/Calendar';
 import { ScheduleModal } from './components/ScheduleModal';
 import { ScheduledPostsList } from './components/ScheduledPostsList';
+import { ContentPlanGenerator } from './components/ContentPlanGenerator';
+import { SmartSchedulePlanner } from './components/SmartSchedulePlanner';
+import { ContentStrategySection } from './components/ContentStrategySection';
 import { AlarmManager } from './components/AlarmManager';
 import { AlarmModal } from './components/AlarmModal';
 import { StepNavigator } from './components/StepNavigator';
 import { generateContent } from './services/contentGenerator';
 import { resizeImageForPlatforms } from './services/imageResizer';
 import { generateVisualSuggestions, generatePostOutline } from './services/visualGenerator';
+import { generateRecurringSchedule } from './services/scheduleGenerator';
+import type { PlannedPost as PlannedPostServiceType } from './services/contentPlanner';
 import { supabase } from './lib/supabase';
 import type { GeneratedContent, ToneType, BrandProfile, ResizedImages, ContentHistory as ContentHistoryType, ScheduledPost, PlannedPost, ContentPlan, Alarm } from './types';
 
@@ -39,8 +44,10 @@ function App() {
   const [visualSuggestions, setVisualSuggestions] = useState<ReturnType<typeof generateVisualSuggestions>>([]);
   const [postOutline, setPostOutline] = useState<ReturnType<typeof generatePostOutline> | null>(null);
 
-  const [currentView, setCurrentView] = useState<'generator' | 'schedule' | 'video'>('generator');
+  const [currentView, setCurrentView] = useState<'generator' | 'schedule' | 'strategy' | 'video'>('generator');
   const [showScheduleModal, setShowScheduleModal] = useState(false);
+  const [showPlanGenerator, setShowPlanGenerator] = useState(false);
+  const [showSmartPlanner, setShowSmartPlanner] = useState(false);
   const [scheduledPosts, setScheduledPosts] = useState<ScheduledPost[]>([]);
   const [plannedPosts, setPlannedPosts] = useState<PlannedPost[]>([]);
   const [contentPlans, setContentPlans] = useState<ContentPlan[]>([]);
@@ -324,6 +331,89 @@ function App() {
     setEditingPost(post as ScheduledPost);
   };
 
+  const handleGenerateContentPlan = async (planData: {
+    planName: string;
+    startDate: string;
+    endDate: string;
+    frequency: string;
+    posts: PlannedPostServiceType[];
+  }) => {
+    const { data: planRecord } = await supabase
+      .from('content_plans')
+      .insert({
+        user_id: userId,
+        brand_profile_id: brandProfile?.id || null,
+        plan_name: planData.planName,
+        start_date: planData.startDate,
+        end_date: planData.endDate,
+        frequency: planData.frequency,
+        total_posts: planData.posts.length,
+        status: 'active'
+      })
+      .select()
+      .single();
+
+    if (planRecord) {
+      const plannedPostsData = planData.posts.map((post, index) => ({
+        content_plan_id: planRecord.id,
+        user_id: userId,
+        title: post.title,
+        suggested_date: post.suggestedDate.toISOString().split('T')[0],
+        suggested_time: post.suggestedTime,
+        rationale: post.rationale,
+        platforms: post.platforms,
+        status: 'suggested' as const,
+        order_in_plan: index
+      }));
+
+      await supabase.from('planned_posts').insert(plannedPostsData);
+      
+      // Immediately update state so calendar reflects new planned posts
+      setPlannedPosts((prev) => [...prev, ...planData.posts]);
+
+      
+      await loadContentPlans();
+      setShowScheduleView(true);
+    }
+  };
+
+  const handleGenerateSmartSchedule = async (scheduleData: {
+    frequency: string;
+    preferredDay: string;
+    preferredTime: string;
+    numberOfPosts: number;
+    startDate: string;
+  }) => {
+    const dates = generateRecurringSchedule(
+      scheduleData.startDate,
+      scheduleData.frequency as 'weekly' | 'biweekly' | 'monthly',
+      scheduleData.preferredDay,
+      scheduleData.numberOfPosts
+    );
+
+    const scheduledPostsData = dates.map((date, index) => ({
+      user_id: userId,
+      brand_profile_id: brandProfile?.id || null,
+      title: `Scheduled Post #${index + 1}`,
+      caption: 'Content to be generated',
+      hashtags: [],
+      platforms: ['instagram'],
+      image_url: '',
+      scheduled_date: date.toISOString().split('T')[0],
+      scheduled_time: scheduleData.preferredTime,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      status: 'draft' as const,
+      notes: `Auto-generated ${scheduleData.frequency} schedule`
+    }));
+
+    await supabase.from('scheduled_posts').insert(scheduledPostsData);
+    
+    // Immediately update state so calendar reflects new posts
+    setScheduledPosts((prev) => [...prev, ...scheduledPostsData]);
+
+    await loadScheduledPosts();
+    setShowScheduleView(true);
+  };
 
   const getSelectedCaption = () => {
     if (!generatedContent) return '';
@@ -420,6 +510,17 @@ function App() {
           >
             <CalendarDays className="w-5 h-5" />
             <span className="font-semibold text-[#FFD54F]">Schedule & Alarms</span>
+          </button>
+          <button
+            onClick={() => setCurrentView('strategy')}
+            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+              currentView === 'strategy'
+                ? 'glass-button-active shadow-lg'
+                : 'glass-button'
+            }`}
+          >
+            <Lightbulb className="w-5 h-5" />
+            <span className="font-semibold text-[#7CB342]">AI Content Strategy</span>
           </button>
           <button
             onClick={() => setCurrentView('video')}
@@ -619,6 +720,45 @@ function App() {
               <h2 className="text-3xl font-bold text-[#7CB342] mb-2">Schedule & Alarms</h2>
               <p className="text-gray-600">Manage your content calendar and set reminders</p>
             </div>
+            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+              <div className="card-float p-6">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                      Smart Schedule Planner
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Create recurring posting schedules automatically
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowSmartPlanner(true)}
+                    className="btn-primary mt-auto"
+                  >
+                    Generate Schedule
+                  </button>
+                </div>
+              </div>
+
+              <div className="card-float p-6">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                      AI Content Planning
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Let AI optimize posting schedule based on your brand
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowPlanGenerator(true)}
+                    className="btn-primary mt-auto"
+                  >
+                    Create Content Plan
+                  </button>
+                </div>
+              </div>
+            </div>
 
             <div className="mb-6">
               <AlarmManager
@@ -657,6 +797,18 @@ function App() {
               </div>
             </div>
           </>
+        ) : currentView === 'strategy' ? (
+          <>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-[#7CB342] mb-2">AI Content Strategy</h2>
+              <p className="text-gray-600">Plan your content calendar with AI-powered recommendations</p>
+            </div>
+
+            <ContentStrategySection
+              onOpenPlanGenerator={() => setShowPlanGenerator(true)}
+              onOpenSmartPlanner={() => setShowSmartPlanner(true)}
+            />
+          </>
         ) : currentView === 'video' ? (
           <>
             <div className="mb-8">
@@ -678,6 +830,19 @@ function App() {
           title: getPostTitle(),
           caption: getSelectedCaption()
         }}
+      />
+
+      <ContentPlanGenerator
+        isOpen={showPlanGenerator}
+        onClose={() => setShowPlanGenerator(false)}
+        onGeneratePlan={handleGenerateContentPlan}
+        brandProfile={brandProfile}
+      />
+
+      <SmartSchedulePlanner
+        isOpen={showSmartPlanner}
+        onClose={() => setShowSmartPlanner(false)}
+        onGenerateSchedule={handleGenerateSmartSchedule}
       />
 
       <AlarmModal
