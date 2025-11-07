@@ -170,10 +170,10 @@ export function InputSection({ onGenerate, isGenerating }: InputSectionProps) {
           </label>
 
           {!imageUrl ? (
-            <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:border-gray-400 hover:bg-gray-50 transition-all duration-300">
+            <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-2xl cursor-pointer hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <Upload className="w-10 h-10 text-gray-400 mb-3" />
-                <p className="text-sm text-gray-600 font-medium">Click to upload image</p>
+                <Upload className="w-10 h-10 text-gray-400 dark:text-gray-300 mb-3" />
+                <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Click to upload image</p>
               </div>
               <input
                 type="file"

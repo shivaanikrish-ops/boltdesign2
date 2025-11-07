@@ -44,7 +44,7 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
                 )}
               </div>
               <div className={`text-sm font-medium ${
-                currentStep === step.number ? 'text-gray-900' : 'text-gray-400'
+                currentStep === step.number ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-500'
               }`}>
                 {step.label}
               </div>
@@ -61,7 +61,7 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
       </div>
       <div className="text-center mt-6 relative">
         <div className="inline-block bg-[#FFD54F] px-4 py-2 rounded-lg shadow-md">
-          <p className="text-sm font-semibold text-gray-800">
+          <p className="text-sm font-semibold text-white">
             ✨ PRESS THE NUMBERS TO NAVIGATE BACK OR FORTH ✨
           </p>
         </div>

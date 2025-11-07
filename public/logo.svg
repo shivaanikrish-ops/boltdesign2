@@ -1,0 +1,45 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Honey Jar -->
+  <path d="M35 25 C35 20, 40 15, 50 15 L70 15 C80 15, 85 20, 85 25 L85 30 C85 32, 83 33, 80 33 L40 33 C37 33, 35 32, 35 30 Z" fill="#B8D954" stroke="#B8D954" stroke-width="3"/>
+
+  <!-- Jar Lid Cloth -->
+  <path d="M35 25 C35 22, 38 20, 42 19 L78 19 C82 20, 85 22, 85 25 L85 28 C85 30, 83 31, 80 31 L40 31 C37 31, 35 30, 35 28 Z" fill="#B8D954"/>
+
+  <!-- Jar Body -->
+  <path d="M38 33 C38 33, 35 35, 35 40 L35 75 C35 82, 40 88, 48 88 L72 88 C80 88, 85 82, 85 75 L85 40 C85 35, 82 33, 82 33 Z" fill="none" stroke="#B8D954" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Honey Drip Left -->
+  <path d="M40 33 L38 42 C38 45, 40 48, 42 48 C44 48, 45 45, 45 42 L45 38" fill="#B8D954"/>
+
+  <!-- Honeycomb Inside -->
+  <g transform="translate(50, 50)">
+    <!-- Center hexagon -->
+    <path d="M 0,-8 L 7,-4 L 7,4 L 0,8 L -7,4 L -7,-4 Z" fill="none" stroke="#FFB84D" stroke-width="2.5"/>
+
+    <!-- Top hexagon -->
+    <path d="M 0,-18 L 6,-14 L 6,-10 L 0,-6 L -6,-10 L -6,-14 Z" fill="none" stroke="#FFB84D" stroke-width="2.5"/>
+
+    <!-- Bottom Left hexagon -->
+    <path d="M -10,0 L -4,4 L -4,8 L -10,12 L -16,8 L -16,4 Z" fill="none" stroke="#FFB84D" stroke-width="2.5"/>
+
+    <!-- Bottom Right hexagon -->
+    <path d="M 10,0 L 16,4 L 16,8 L 10,12 L 4,8 L 4,4 Z" fill="none" stroke="#FFB84D" stroke-width="2.5"/>
+  </g>
+
+  <!-- Bee -->
+  <g transform="translate(85, 30)">
+    <!-- Bee Body -->
+    <ellipse cx="0" cy="0" rx="8" ry="10" fill="#FFB84D"/>
+
+    <!-- Bee Stripes -->
+    <path d="M -6,-3 L 6,-3" stroke="#FFA726" stroke-width="2"/>
+    <path d="M -6,3 L 6,3" stroke="#FFA726" stroke-width="2"/>
+
+    <!-- Bee Wings -->
+    <ellipse cx="-5" cy="-8" rx="7" ry="9" fill="#FFB84D" opacity="0.7" transform="rotate(-30 -5 -8)"/>
+    <ellipse cx="5" cy="-8" rx="7" ry="9" fill="#FFB84D" opacity="0.7" transform="rotate(30 5 -8)"/>
+
+    <!-- Bee Antennae -->
+    <path d="M -3,-10 L -4,-14 M 3,-10 L 4,-14" stroke="#FFB84D" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+</svg>

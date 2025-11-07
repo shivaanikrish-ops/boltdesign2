@@ -56,7 +56,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
   return (
     <div className="card-float p-6 mb-6 animate-fade-in">
       <div className="flex items-center justify-between mb-6">
-        <div className="gradient-header-bg inline-block">
+        <div className="gradient-header-bg dark:bg-[#263B4D] inline-block">
           <div className="flex items-center gap-2">
             <Hash className="w-4 h-4 text-teal-600" />
             <h2 className="text-xl font-bold gradient-text">Generated Hashtags</h2>
@@ -69,7 +69,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
               className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all text-xs font-semibold transform hover:scale-[0.98] ${
                 isEditing
                   ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md'
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  : 'bg-gray-100 dark:bg-[#263B4D] hover:bg-gray-200 text-gray-700 dark:text-white'
               }`}
             >
               <Edit2 className="w-3.5 h-3.5" />
@@ -78,7 +78,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
           )}
           <button
             onClick={handleCopy}
-            className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 rounded-xl transition-all text-xs font-semibold text-gray-700 transform hover:scale-[0.98]"
+            className="flex items-center gap-2 px-3 py-2 bg-gray-100 dark:bg-[#263B4D] hover:bg-gray-200 rounded-xl transition-all text-xs font-semibold text-gray-700 dark:text-white transform hover:scale-[0.98]"
           >
             {copied ? (
               <>
@@ -114,7 +114,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
               Add
             </button>
           </div>
-          <p className="text-xs text-gray-600 mt-2">
+          <p className="text-xs text-gray-600 dark:text-gray-300 mt-2">
             💡 Tip: You can add tags with or without the # symbol. Press Enter to add.
           </p>
         </div>
@@ -124,7 +124,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
         {editedHashtags.map((tag, index) => (
           <div
             key={index}
-            className={`group relative px-3 py-1.5 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 text-blue-700 rounded-xl text-xs font-medium border border-blue-200 transition-all hover:shadow-md hover:-translate-y-0.5 ${
+            className={`group relative px-3 py-1.5 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 dark:bg-[#263B4D] text-blue-700 dark:text-blue-300 rounded-xl text-xs font-medium border border-blue-200 dark:border-blue-500 transition-all hover:shadow-md hover:-translate-y-0.5 ${
               isEditing && onHashtagsChange ? 'pr-8' : ''
             }`}
           >
@@ -143,7 +143,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
       </div>
 
       {editedHashtags.length === 0 && (
-        <p className="text-gray-500 text-center py-4">
+        <p className="text-gray-500 dark:text-gray-300 text-center py-4">
           No hashtags yet. Click "Add" to create your first hashtag.
         </p>
       )}
