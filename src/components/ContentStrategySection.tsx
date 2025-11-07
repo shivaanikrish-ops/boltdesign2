@@ -1,12 +1,23 @@
 import { useState } from 'react';
-import { Lightbulb, Calendar, Zap, Plus } from 'lucide-react';
+import { Lightbulb, Calendar, Zap, Plus, FileText } from 'lucide-react';
+
+interface ContentPlan {
+  id: string;
+  topics: string[];
+  schedule: {
+    date: string;
+    topic: string;
+  }[];
+  insights: string[];
+}
 
 interface ContentStrategySectionProps {
   onOpenPlanGenerator: () => void;
   onOpenSmartPlanner: () => void;
+  generatedPlans?: ContentPlan[];
 }
 
-export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner }: ContentStrategySectionProps) {
+export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner, generatedPlans = [] }: ContentStrategySectionProps) {
   return (
     <div className="space-y-6">
       <div>
@@ -79,6 +90,66 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
           </div>
         </div>
       </div>
+
+      {generatedPlans.length > 0 && (
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Your Generated Content Plans</h3>
+          {generatedPlans.map((plan) => (
+            <div key={plan.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-gray-900 mb-2">Content Plan</h4>
+
+                  <div className="mb-4">
+                    <h5 className="text-sm font-semibold text-gray-700 mb-2">Suggested Topics:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {plan.topics.map((topic, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-green-50 text-green-700 rounded-full text-sm">
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {plan.schedule.length > 0 && (
+                    <div className="mb-4">
+                      <h5 className="text-sm font-semibold text-gray-700 mb-2">Posting Schedule:</h5>
+                      <div className="space-y-2">
+                        {plan.schedule.slice(0, 5).map((item, idx) => (
+                          <div key={idx} className="flex items-center gap-3 text-sm">
+                            <span className="text-gray-500 font-medium">{item.date}</span>
+                            <span className="text-gray-700">{item.topic}</span>
+                          </div>
+                        ))}
+                        {plan.schedule.length > 5 && (
+                          <p className="text-sm text-gray-500 italic">+ {plan.schedule.length - 5} more posts</p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {plan.insights.length > 0 && (
+                    <div>
+                      <h5 className="text-sm font-semibold text-gray-700 mb-2">AI Insights:</h5>
+                      <ul className="space-y-1">
+                        {plan.insights.map((insight, idx) => (
+                          <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
+                            <span className="text-[#7CB342] font-bold">•</span>
+                            <span>{insight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

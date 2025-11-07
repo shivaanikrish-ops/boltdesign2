@@ -830,6 +830,12 @@ function App() {
             <ContentStrategySection
               onOpenPlanGenerator={() => setShowPlanGenerator(true)}
               onOpenSmartPlanner={() => setShowSmartPlanner(true)}
+              generatedPlans={contentPlans.map(plan => ({
+                id: plan.id,
+                topics: plan.topics || [],
+                schedule: plan.schedule || [],
+                insights: plan.insights || []
+              }))}
             />
           </>
         ) : currentView === 'video' ? (
