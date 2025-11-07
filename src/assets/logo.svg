@@ -1,0 +1,53 @@
+<svg width="600" height="450" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Honey jar lid -->
+  <path d="M242 30 C242 30 242 25 245 22 L355 22 C358 25 358 30 358 30 L358 50 C358 55 353 60 348 60 L252 60 C247 60 242 55 242 50 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
+
+  <!-- Jar opening -->
+  <path d="M235 60 C235 55 240 50 245 50 L355 50 C360 50 365 55 365 60 L365 80 C365 80 360 85 355 85 L245 85 C240 85 235 80 235 80 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
+
+  <!-- Main jar body -->
+  <path d="M235 80 L245 95 C245 95 245 280 245 280 C245 290 253 298 263 298 L337 298 C347 298 355 290 355 280 L355 95 L365 80 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="6"/>
+
+  <!-- Honey drip left -->
+  <path d="M260 85 C260 85 258 90 258 95 C258 100 258 105 258 110 C258 115 263 118 268 118 C268 118 268 95 268 95" fill="#F9A825"/>
+
+  <!-- Honey drip right -->
+  <path d="M340 85 C340 85 342 90 342 95 C342 100 342 105 342 110 C342 115 337 118 332 118 C332 118 332 95 332 95" fill="#F9A825"/>
+
+  <!-- Honeycomb hexagons in jar -->
+  <g transform="translate(280, 170)">
+    <!-- Center hexagon -->
+    <path d="M0,-15 L13,-7.5 L13,7.5 L0,15 L-13,7.5 L-13,-7.5 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
+    <!-- Top hexagon -->
+    <path d="M0,-45 L13,-37.5 L13,-22.5 L0,-15 L-13,-22.5 L-13,-37.5 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
+    <!-- Bottom left hexagon -->
+    <path d="M-22.5,7.5 L-9.5,15 L-9.5,30 L-22.5,37.5 L-35.5,30 L-35.5,15 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
+    <!-- Bottom right hexagon -->
+    <path d="M22.5,7.5 L35.5,15 L35.5,30 L22.5,37.5 L9.5,30 L9.5,15 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
+  </g>
+
+  <!-- Bee body -->
+  <ellipse cx="450" cy="135" rx="28" ry="35" fill="#FFA726"/>
+
+  <!-- Bee stripes -->
+  <rect x="422" y="125" width="56" height="8" rx="4" fill="#5D4037"/>
+  <rect x="422" y="145" width="56" height="8" rx="4" fill="#5D4037"/>
+
+  <!-- Bee wings -->
+  <ellipse cx="435" cy="115" rx="22" ry="28" fill="#FFE082" opacity="0.7" transform="rotate(-20 435 115)"/>
+  <ellipse cx="465" cy="115" rx="22" ry="28" fill="#FFE082" opacity="0.7" transform="rotate(20 465 115)"/>
+
+  <!-- Bee antenna left -->
+  <line x1="440" y1="100" x2="435" y2="85" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="435" cy="82" r="4" fill="#5D4037"/>
+
+  <!-- Bee antenna right -->
+  <line x1="460" y1="100" x2="465" y2="85" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="465" cy="82" r="4" fill="#5D4037"/>
+
+  <!-- Text: CONTENT HIVE -->
+  <text x="300" y="370" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
+
+  <!-- Subtitle -->
+  <text x="300" y="410" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
+</svg>

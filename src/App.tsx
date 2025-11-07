@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, FileText } from 'lucide-react';
+import logoIcon from './assets/logo-icon.svg';
+import logo from './assets/logo.svg';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -485,9 +487,9 @@ function App() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+              className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer bg-white/50"
             >
-              <Sparkles className="w-6 h-6 text-white" />
+              <img src={logoIcon} alt="Content Hive" className="w-10 h-10" />
             </button>
             {!sidebarCollapsed && (
               <div>
@@ -595,11 +597,9 @@ function App() {
         {currentView === 'generator' ? (
           <>
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-2xl mb-4 shadow-lg">
-                <Sparkles className="w-8 h-8 text-white" />
+              <div className="inline-flex items-center justify-center mb-4">
+                <img src={logo} alt="Content Hive" className="w-full max-w-md" />
               </div>
-              <h2 className="text-4xl font-bold text-[#7CB342] mb-2">Content Hive</h2>
-              <p className="text-gray-600">Create buzz-worthy content with AI</p>
             </div>
             <StepNavigator
               currentStep={currentStep}
