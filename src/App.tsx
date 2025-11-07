@@ -720,8 +720,8 @@ function App() {
               <h2 className="text-3xl font-bold text-[#7CB342] mb-2">Schedule & Alarms</h2>
               <p className="text-gray-600">Manage your content calendar and set reminders</p>
             </div>
-            <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
-              <div className="card-float p-6">
+            <div className="mb-6 animate-fade-in">
+              <div className="card-float p-6 max-w-2xl">
                 <div className="flex flex-col h-full">
                   <div className="mb-4">
                     <h3 className="text-xl font-bold text-gray-800 mb-1">
@@ -736,25 +736,6 @@ function App() {
                     className="btn-primary mt-auto"
                   >
                     Generate Schedule
-                  </button>
-                </div>
-              </div>
-
-              <div className="card-float p-6">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">
-                      AI Content Planning
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      Let AI optimize posting schedule based on your brand
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setShowPlanGenerator(true)}
-                    className="btn-primary mt-auto"
-                  >
-                    Create Content Plan
                   </button>
                 </div>
               </div>
