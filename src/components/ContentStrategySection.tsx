@@ -9,42 +9,42 @@ interface ContentStrategySectionProps {
 export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner }: ContentStrategySectionProps) {
   return (
     <div className="space-y-6">
-      <div className="max-w-2xl">
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-white" />
+      <div>
+        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-all">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
+              <Calendar className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-gray-900">AI Content Planner</h3>
-              <p className="text-sm text-gray-600">Generate optimized posting schedules</p>
+              <h3 className="text-2xl font-bold text-gray-900">AI Content Planner</h3>
+              <p className="text-base text-gray-600">Generate optimized posting schedules with AI insights</p>
             </div>
           </div>
 
-          <div className="space-y-3 mb-6">
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-green-600 font-bold">✓</span>
+          <div className="space-y-4 mb-8">
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-sm text-green-600 font-bold">✓</span>
               </div>
-              <p className="text-sm text-gray-700">AI-powered posting frequency recommendations</p>
+              <p className="text-base text-gray-700">AI-powered posting frequency recommendations tailored to your audience</p>
             </div>
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-green-600 font-bold">✓</span>
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-sm text-green-600 font-bold">✓</span>
               </div>
-              <p className="text-sm text-gray-700">Content ideas based on your brand profile</p>
+              <p className="text-base text-gray-700">Smart content ideas automatically generated based on your brand profile</p>
             </div>
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-green-600 font-bold">✓</span>
+            <div className="flex items-start gap-3">
+              <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-sm text-green-600 font-bold">✓</span>
               </div>
-              <p className="text-sm text-gray-700">Multi-week content calendar generation</p>
+              <p className="text-base text-gray-700">Multi-week content calendar generation with optimal timing recommendations</p>
             </div>
           </div>
 
           <button
             onClick={onOpenPlanGenerator}
-            className="w-full py-3 bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            className="w-full py-4 text-lg bg-gradient-to-r from-[#FFD54F] via-[#7CB342] to-[#42A5F5] text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
           >
             <Plus className="w-5 h-5" />
             Generate Content Plan
