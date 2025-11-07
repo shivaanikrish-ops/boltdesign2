@@ -1,4 +1,5 @@
-import { Clock, Instagram, Twitter, Linkedin, Facebook, Edit, Trash2, CheckCircle, AlertCircle, Sparkles, Bell } from 'lucide-react';
+import { useState } from 'react';
+import { Clock, Instagram, Twitter, Linkedin, Facebook, Edit, Trash2, CheckCircle, AlertCircle, Sparkles, Bell, ChevronDown, ChevronUp } from 'lucide-react';
 import type { ScheduledPost, PlannedPost } from '../types';
 
 interface ScheduledPostsListProps {
@@ -11,6 +12,7 @@ interface ScheduledPostsListProps {
 }
 
 export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate, onEdit, onDelete, onSetAlarm }: ScheduledPostsListProps) {
+  const [isExpanded, setIsExpanded] = useState(true);
   const platformIcons = {
     instagram: Instagram,
     twitter: Twitter,
@@ -88,27 +90,41 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6">
-      <div className="flex items-center gap-2 mb-6">
-        <Clock className="w-5 h-5 text-[#7CB342]" />
-        <h3 className="text-lg font-bold text-gray-900">
-          {selectedDate ? `Posts for ${formatDate(selectedDate.toISOString())}` : 'All Scheduled Posts'}
-        </h3>
-      </div>
-
-      {sortedPosts.length === 0 ? (
-        <div className="text-center py-12">
-          <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
-            <Clock className="w-16 h-16 text-gray-300" />
-          </div>
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">
-            No scheduled posts
+    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <Clock className="w-5 h-5 text-[#7CB342]" />
+          <h3 className="text-lg font-bold text-gray-900">
+            {selectedDate ? `Posts for ${formatDate(selectedDate.toISOString())}` : 'All Scheduled Posts'}
           </h3>
+          <span className="px-2 py-1 bg-[#7CB342] text-white text-xs font-bold rounded-full">
+            {sortedPosts.length}
+          </span>
         </div>
-      ) : (
+        {isExpanded ? (
+          <ChevronUp className="w-5 h-5 text-gray-500" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-gray-500" />
+        )}
+      </button>
 
-      <div className="space-y-4">
-        {sortedPosts.map(post => {
+      {isExpanded && (
+        <div className="px-6 pb-6">
+          {sortedPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-16 h-16 text-gray-300" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-600 mb-2">
+                No scheduled posts
+              </h3>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {sortedPosts.map(post => {
           const StatusIcon = statusConfig[post.status].icon;
           return (
             <div
@@ -190,7 +206,9 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
             </div>
           );
         })}
-      </div>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
