@@ -91,8 +91,30 @@ function App() {
             setRingingAlarm(alarm);
 
             if (alarm.sound_enabled) {
-              const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvHZiTYIGGe778edTgwOUKzn77RgGwU7k9n0yHMpBSh+zPLaizsKElyx6+yhUhELSpzh8bllHAUugdDx2YYzBxdqvO/InUwNDlOu6O+yXhoEOpTX88p0KQUngM3y2Ys5CRJbr+rspFURCkud4fG5ZBsCLYHQ8dqHMwcXa7vvyp1MDQ5Tr+jvsV0aBDuU1/PKcygFKIDN8tmKOQkSW6/q7KVVEQNMV+Dxu2QcBS+B0PHahzMHF2y878qdTA0OVK/o77BdGgQ7lNfzyn4pBSiAzfLZijkJEVuw6uylVhEDTVjh8bpjHAYugdDx2ocxBxZqvO/KnksODVKt6O+xXRoEO5TX88p+KAUogM3y2Yo4AxFbsOrspVYTAkxZ4fG6YhwFLoHQ8dmHMQcWarzuyp5KDw1Srujv');
-              audio.play().catch(e => console.log('Could not play sound:', e));
+              const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+              const oscillator = audioContext.createOscillator();
+              const gainNode = audioContext.createGain();
+
+              oscillator.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+
+              oscillator.frequency.value = 800;
+              oscillator.type = 'sine';
+              gainNode.gain.value = 0.5;
+
+              const beepDuration = 0.2;
+              const pauseDuration = 0.1;
+              let currentTime = audioContext.currentTime;
+
+              for (let i = 0; i < 16; i++) {
+                oscillator.frequency.setValueAtTime(i % 2 === 0 ? 800 : 1000, currentTime);
+                gainNode.gain.setValueAtTime(0.5, currentTime);
+                gainNode.gain.setValueAtTime(0, currentTime + beepDuration);
+                currentTime += beepDuration + pauseDuration;
+              }
+
+              oscillator.start(audioContext.currentTime);
+              oscillator.stop(audioContext.currentTime + 5);
             }
 
             if (alarm.notification_enabled && 'Notification' in window) {
