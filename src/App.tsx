@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, FileText, Sun, Moon } from 'lucide-react';
-import { useTheme } from './contexts/ThemeContext';
+import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, FileText } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -31,7 +30,6 @@ import { supabase } from './lib/supabase';
 import type { GeneratedContent, ToneType, BrandProfile, ResizedImages, ContentHistory as ContentHistoryType, ScheduledPost, PlannedPost, ContentPlan, Alarm } from './types';
 
 function App() {
-  const { isDarkMode, toggleTheme } = useTheme();
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedContent, setGeneratedContent] = useState<GeneratedContent | null>(null);
   const [selectedTone, setSelectedTone] = useState<ToneType>('casual');
@@ -481,9 +479,9 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-[#FAFFF7] dark:bg-gray-900 flex transition-colors duration-300">
-      <aside className={`bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl border-r border-gray-200/50 dark:border-gray-700/50 flex flex-col sidebar-glass relative overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'w-20' : 'w-60'}`}>
-        <div className="p-6 border-b border-gray-200/50 dark:border-gray-700/50">
+    <div className="min-h-screen bg-[#FAFFF7] flex">
+      <aside className={`bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass relative overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'w-20' : 'w-60'}`}>
+        <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
@@ -494,7 +492,7 @@ function App() {
             {!sidebarCollapsed && (
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Content Hive</h1>
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">AI Content Creator</p>
+                <p className="text-xs text-gray-500 font-medium">AI Content Creator</p>
               </div>
             )}
           </div>
@@ -510,7 +508,7 @@ function App() {
             title={sidebarCollapsed ? 'Content Generator' : ''}
           >
             <Sparkles className="w-5 h-5" />
-            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342] dark:text-[#99D852]">Content Generator</span>}
+            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342]">Content Generator</span>}
           </button>
           <button
             onClick={() => setCurrentView('schedule')}
@@ -522,7 +520,7 @@ function App() {
             title={sidebarCollapsed ? 'Schedule & Alarms' : ''}
           >
             <CalendarDays className="w-5 h-5" />
-            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F] dark:text-[#FFC107]">Schedule & Alarms</span>}
+            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F]">Schedule & Alarms</span>}
           </button>
           <button
             onClick={() => setCurrentView('strategy')}
@@ -534,7 +532,7 @@ function App() {
             title={sidebarCollapsed ? 'AI Content Strategy' : ''}
           >
             <Lightbulb className="w-5 h-5" />
-            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342] dark:text-[#99D852]">AI Content Strategy</span>}
+            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342]">AI Content Strategy</span>}
           </button>
           <button
             onClick={() => setCurrentView('video')}
@@ -546,10 +544,10 @@ function App() {
             title={sidebarCollapsed ? 'Video Tips' : ''}
           >
             <Video className="w-5 h-5" />
-            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F] dark:text-[#FFC107]">Video Tips</span>}
+            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F]">Video Tips</span>}
           </button>
 
-          <div className={`border-t border-gray-200/50 dark:border-gray-700/50 ${sidebarCollapsed ? 'mx-2' : 'mx-0'} pt-4`}></div>
+          <div className={`border-t border-gray-200/50 ${sidebarCollapsed ? 'mx-2' : 'mx-0'} pt-4`}></div>
 
           <button
             onClick={() => setShowSavedContentModal(true)}
@@ -559,7 +557,7 @@ function App() {
             <FolderOpen className="w-5 h-5" />
             {!sidebarCollapsed && (
               <div className="flex items-center justify-between w-full">
-                <span className="font-semibold text-[#7CB342] dark:text-[#99D852]">Saved Content</span>
+                <span className="font-semibold text-[#7CB342]">Saved Content</span>
                 {contentHistory.length > 0 && (
                   <span className="text-xs bg-[#7CB342] text-white rounded-full px-2 py-0.5">{contentHistory.length}</span>
                 )}
@@ -575,7 +573,7 @@ function App() {
             <FileText className="w-5 h-5" />
             {!sidebarCollapsed && (
               <div className="flex items-center justify-between w-full">
-                <span className="font-semibold text-[#42A5F5] dark:text-[#64B5F6]">Content Plans</span>
+                <span className="font-semibold text-[#42A5F5]">Content Plans</span>
                 {contentPlans.length > 0 && (
                   <span className="text-xs bg-[#42A5F5] text-white rounded-full px-2 py-0.5">{contentPlans.length}</span>
                 )}
@@ -583,37 +581,15 @@ function App() {
             )}
           </button>
         </nav>
-        <div className="p-6 border-t border-gray-200/50 dark:border-gray-700/50 space-y-4">
-          <button
-            onClick={toggleTheme}
-            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-between'} px-4 py-3 rounded-xl glass-button transition-all duration-300 hover:scale-105`}
-            title={sidebarCollapsed ? (isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode') : ''}
-          >
-            {!sidebarCollapsed && (
-              <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Theme</span>
-            )}
-            <div className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${
-              isDarkMode ? 'bg-blue-600' : 'bg-gray-300'
-            }`}>
-              <div className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform duration-300 flex items-center justify-center ${
-                isDarkMode ? 'translate-x-7' : 'translate-x-0'
-              }`}>
-                {isDarkMode ? (
-                  <Moon className="w-3 h-3 text-blue-600" />
-                ) : (
-                  <Sun className="w-3 h-3 text-yellow-500" />
-                )}
-              </div>
-            </div>
-          </button>
-          {!sidebarCollapsed && (
+        {!sidebarCollapsed && (
+          <div className="p-6 border-t border-gray-200/50">
             <div className="glass-badge text-center py-3 px-4 rounded-xl">
               <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </aside>
-      <main className="flex-1 overflow-auto dark:bg-gray-900">
+      <main className="flex-1 overflow-auto">
         <div className="max-w-7xl mx-auto px-8 py-8">
 
         {currentView === 'generator' ? (
@@ -622,8 +598,8 @@ function App() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-2xl mb-4 shadow-lg">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-4xl font-bold text-[#7CB342] dark:text-[#99D852] mb-2">Content Hive</h2>
-              <p className="text-gray-600 dark:text-gray-400">Create buzz-worthy content with AI</p>
+              <h2 className="text-4xl font-bold text-[#7CB342] mb-2">Content Hive</h2>
+              <p className="text-gray-600">Create buzz-worthy content with AI</p>
             </div>
             <StepNavigator
               currentStep={currentStep}
