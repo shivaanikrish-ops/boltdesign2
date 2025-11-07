@@ -487,9 +487,9 @@ function App() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer bg-white/50"
+              className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer bg-gradient-to-br from-[#C5E1A5] to-[#FFF9C4]"
             >
-              <img src={logoIcon} alt="Content Hive" className="w-10 h-10" />
+              <img src={logoIcon} alt="Content Hive" className="w-9 h-9" />
             </button>
             {!sidebarCollapsed && (
               <div>
@@ -596,9 +596,9 @@ function App() {
 
         {currentView === 'generator' ? (
           <>
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center mb-4">
-                <img src={logo} alt="Content Hive" className="w-full max-w-md" />
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center mb-3">
+                <img src={logo} alt="Content Hive" className="w-full max-w-xs" />
               </div>
             </div>
             <StepNavigator
