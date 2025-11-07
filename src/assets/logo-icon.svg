@@ -1,93 +1,57 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <style>
-    @keyframes flyPath {
-      0% { offset-distance: 0%; }
-      100% { offset-distance: 100%; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
     }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-8deg); }
-      75% { transform: rotate(8deg); }
-    }
-    .bee-flying {
-      animation: wiggle 1.5s ease-in-out infinite;
-      transform-origin: center;
-    }
+    .animated { animation: float 2s ease-in-out infinite; }
   </style>
 
-  <!-- Flight trail (dashed path) -->
-  <path d="M15,85 Q25,70 35,65 T50,50 T60,35 T75,15"
-        stroke="#3E2723"
-        stroke-width="2.5"
-        stroke-dasharray="5,5"
-        fill="none"
-        opacity="0.4"
-        stroke-linecap="round"/>
+  <!-- Simple Jar -->
+  <g class="animated" transform="translate(25, 30)">
+    <!-- Lid -->
+    <rect x="0" y="0" width="25" height="5" rx="2" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
 
-  <!-- Decorative crosses along trail -->
-  <g opacity="0.4" stroke="#3E2723" stroke-width="2" stroke-linecap="round">
-    <line x1="32" y1="66" x2="38" y2="64"/>
-    <line x1="35" y1="69" x2="35" y2="61"/>
+    <!-- Jar outline -->
+    <path d="M2,5 L2,30 C2,32 4,34 6,34 L19,34 C21,34 23,32 23,30 L23,5"
+          fill="none" stroke="#7CB342" stroke-width="2"/>
 
-    <line x1="48" y1="48" x2="52" y2="48"/>
-    <line x1="50" y1="46" x2="50" y2="50"/>
-
-    <line x1="58" y1="33" x2="62" y2="35"/>
-    <line x1="60" y1="31" x2="60" y2="37"/>
+    <!-- Honeycomb -->
+    <g transform="translate(12.5, 18)">
+      <path d="M0,-4 L3,-2 L3,2 L0,4 L-3,2 L-3,-2 Z" fill="#FFA726" stroke="#F57C00" stroke-width="1"/>
+      <path d="M0,-11 L3,-9 L3,-5 L0,-4 L-3,-5 L-3,-9 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="1"/>
+    </g>
   </g>
 
-  <!-- Bee at the end of trail -->
-  <g class="bee-flying" transform="translate(75, 15)">
-    <!-- Bee wings -->
-    <ellipse cx="-4" cy="-4" rx="10" ry="13" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1.5" opacity="0.9" transform="rotate(-25 -4 -4)"/>
-    <ellipse cx="14" cy="-4" rx="10" ry="13" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1.5" opacity="0.9" transform="rotate(25 14 -4)"/>
+  <!-- Large Bee -->
+  <g class="animated" transform="translate(60, 35)" style="animation-delay: 0.2s">
+    <!-- Wings -->
+    <ellipse cx="-5" cy="-3" rx="10" ry="12" fill="#E3F2FD" stroke="#64B5F6" stroke-width="1.5" opacity="0.9" transform="rotate(-20 -5 -3)"/>
+    <ellipse cx="17" cy="-3" rx="10" ry="12" fill="#E3F2FD" stroke="#64B5F6" stroke-width="1.5" opacity="0.9" transform="rotate(20 17 -3)"/>
 
-    <!-- Bee body -->
-    <ellipse cx="5" cy="5" rx="11" ry="14" fill="#FFD54F"/>
+    <!-- Body -->
+    <ellipse cx="6" cy="6" rx="12" ry="16" fill="#FFD54F"/>
 
-    <!-- Bee stripes -->
-    <ellipse cx="5" cy="1" rx="10" ry="3.5" fill="#3E2723"/>
-    <ellipse cx="5" cy="9" rx="10" ry="3.5" fill="#3E2723"/>
+    <!-- Stripes -->
+    <rect x="-6" y="1" width="24" height="3" rx="1.5" fill="#3E2723"/>
+    <rect x="-6" y="9" width="24" height="3" rx="1.5" fill="#3E2723"/>
 
-    <!-- Bee head -->
-    <circle cx="5" cy="-6" r="7" fill="#FFA726"/>
+    <!-- Head -->
+    <circle cx="6" cy="-8" r="8" fill="#FFA726"/>
 
-    <!-- Bee face -->
-    <ellipse cx="3" cy="-7" rx="2" ry="2.5" fill="#3E2723"/>
-    <ellipse cx="7" cy="-7" rx="2" ry="2.5" fill="#3E2723"/>
-    <circle cx="3" cy="-6.5" r="1" fill="white"/>
-    <circle cx="7" cy="-6.5" r="1" fill="white"/>
+    <!-- Eyes -->
+    <circle cx="3" cy="-9" r="2" fill="#3E2723"/>
+    <circle cx="9" cy="-9" r="2" fill="#3E2723"/>
+    <circle cx="3" cy="-8.5" r="1" fill="white"/>
+    <circle cx="9" cy="-8.5" r="1" fill="white"/>
 
     <!-- Smile -->
-    <path d="M3.5,-4 Q5,-2.5 6.5,-4" stroke="#3E2723" stroke-width="1" fill="none" stroke-linecap="round"/>
+    <path d="M3.5,-5 Q6,-3.5 8.5,-5" stroke="#3E2723" stroke-width="1" fill="none" stroke-linecap="round"/>
 
-    <!-- Bee antennae -->
-    <path d="M3,-11 Q2,-14 1.5,-16" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-    <circle cx="1.5" cy="-17" r="1.5" fill="#3E2723"/>
-    <path d="M7,-11 Q8,-14 8.5,-16" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-    <circle cx="8.5" cy="-17" r="1.5" fill="#3E2723"/>
-
-    <!-- Bee stinger -->
-    <path d="M5,17 L3.5,21 L5,20 L6.5,21 Z" fill="#3E2723"/>
-  </g>
-
-  <!-- Secondary bee (smaller, mid-trail) -->
-  <g opacity="0.6" transform="translate(50, 50) scale(0.7)">
-    <ellipse cx="-3" cy="-3" rx="8" ry="10" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1" opacity="0.8" transform="rotate(-20 -3 -3)"/>
-    <ellipse cx="11" cy="-3" rx="8" ry="10" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1" opacity="0.8" transform="rotate(20 11 -3)"/>
-    <ellipse cx="4" cy="4" rx="9" ry="11" fill="#FFD54F"/>
-    <ellipse cx="4" cy="1" rx="8" ry="3" fill="#3E2723"/>
-    <ellipse cx="4" cy="7" rx="8" ry="3" fill="#3E2723"/>
-    <circle cx="4" cy="-5" r="6" fill="#FFA726"/>
-  </g>
-
-  <!-- Third bee (smallest, start of trail) -->
-  <g opacity="0.3" transform="translate(25, 78) scale(0.5)">
-    <ellipse cx="-2" cy="-2" rx="7" ry="9" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1" opacity="0.8" transform="rotate(-15 -2 -2)"/>
-    <ellipse cx="10" cy="-2" rx="7" ry="9" fill="#E3F2FD" stroke="#90CAF9" stroke-width="1" opacity="0.8" transform="rotate(15 10 -2)"/>
-    <ellipse cx="4" cy="4" rx="8" ry="10" fill="#FFD54F"/>
-    <ellipse cx="4" cy="1" rx="7" ry="2.5" fill="#3E2723"/>
-    <ellipse cx="4" cy="7" rx="7" ry="2.5" fill="#3E2723"/>
-    <circle cx="4" cy="-4" r="5" fill="#FFA726"/>
+    <!-- Antennae -->
+    <line x1="3" y1="-14" x2="1" y2="-18" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="1" cy="-19" r="1.5" fill="#3E2723"/>
+    <line x1="9" y1="-14" x2="11" y2="-18" stroke="#3E2723" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="11" cy="-19" r="1.5" fill="#3E2723"/>
   </g>
 </svg>

@@ -2,102 +2,64 @@
   <style>
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-8deg); }
-      75% { transform: rotate(8deg); }
-    }
-    .jar { animation: float 3s ease-in-out infinite; transform-origin: center; }
-    .bee { animation: float 3s ease-in-out infinite 0.5s, wiggle 2s ease-in-out infinite; transform-origin: center; }
+    .animated { animation: float 3s ease-in-out infinite; }
   </style>
 
-  <g class="jar">
-    <!-- Jar lid top -->
-    <path d="M240 35 C240 25 245 20 250 20 L350 20 C355 20 360 25 360 35 L360 50 C360 55 355 60 350 60 L250 60 C245 60 240 55 240 50 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="5"/>
+  <!-- Honey Jar (Simple) -->
+  <g class="animated" transform="translate(260, 100)">
+    <!-- Jar lid -->
+    <rect x="0" y="0" width="80" height="15" rx="5" fill="#C5E1A5" stroke="#7CB342" stroke-width="4"/>
 
-    <!-- Lid rim -->
-    <rect x="235" y="55" width="130" height="15" rx="5" fill="#A5D6A7" stroke="#7CB342" stroke-width="5"/>
+    <!-- Jar body -->
+    <path d="M5,15 L5,90 C5,95 10,100 15,100 L65,100 C70,100 75,95 75,90 L75,15"
+          fill="none" stroke="#7CB342" stroke-width="4" stroke-linecap="round"/>
 
-    <!-- Cloth pattern on lid -->
-    <path d="M245 30 Q300 40 355 30" stroke="#7CB342" stroke-width="2" fill="none"/>
-    <path d="M245 42 Q300 52 355 42" stroke="#7CB342" stroke-width="2" fill="none"/>
-
-    <!-- Main jar body -->
-    <path d="M235 70 L240 85 C240 85 240 250 240 250 C240 265 252 275 265 275 L335 275 C348 275 360 265 360 250 L360 85 L365 70 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="6" stroke-linejoin="round"/>
-
-    <!-- Honey inside jar (golden) -->
-    <path d="M245 200 C245 200 245 250 245 250 C245 260 252 268 262 268 L338 268 C348 268 355 260 355 250 L355 200 Z" fill="#FFD54F" opacity="0.6"/>
-
-    <!-- Honey drip on jar -->
-    <path d="M255 85 C255 85 253 92 253 98 C253 104 253 110 253 115 C253 120 257 124 262 124 C267 124 262 100 262 95 C262 90 260 85 255 85 Z" fill="#F9A825" stroke="#F57C00" stroke-width="1"/>
-
-    <!-- Honeycomb pattern inside jar -->
-    <g transform="translate(280, 160)">
-      <!-- Center honeycomb cluster -->
-      <path d="M0,-18 L12,-9 L12,9 L0,18 L-12,9 L-12,-9 Z" fill="#FFA726" stroke="#F57C00" stroke-width="3"/>
-      <circle cx="0" cy="0" r="4" fill="#FFF9C4"/>
-
-      <!-- Top honeycomb -->
-      <path d="M0,-54 L12,-45 L12,-27 L0,-18 L-12,-27 L-12,-45 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="3"/>
-      <circle cx="0" cy="-36" r="4" fill="#FFF9C4"/>
-
-      <!-- Bottom left honeycomb -->
-      <path d="M-21,0 L-9,9 L-9,27 L-21,36 L-33,27 L-33,9 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="3"/>
-      <circle cx="-21" cy="18" r="4" fill="#FFF9C4"/>
-
-      <!-- Bottom right honeycomb -->
-      <path d="M21,0 L33,9 L33,27 L21,36 L9,27 L9,9 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="3"/>
-      <circle cx="21" cy="18" r="4" fill="#FFF9C4"/>
+    <!-- Honeycomb inside -->
+    <g transform="translate(40, 55)">
+      <path d="M0,-12 L8,-6 L8,6 L0,12 L-8,6 L-8,-6 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      <path d="M0,-36 L8,-30 L8,-18 L0,-12 L-8,-18 L-8,-30 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="2"/>
+      <path d="M-14,0 L-6,6 L-6,18 L-14,24 L-22,18 L-22,6 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="2"/>
+      <path d="M14,0 L22,6 L22,18 L14,24 L6,18 L6,6 Z" fill="#FFB74D" stroke="#F57C00" stroke-width="2"/>
     </g>
-
-    <!-- Jar shine effect -->
-    <ellipse cx="265" cy="120" rx="15" ry="35" fill="white" opacity="0.3"/>
   </g>
 
-  <!-- Bee flying -->
-  <g class="bee" transform="translate(400, 110)">
-    <!-- Bee wings -->
-    <ellipse cx="-8" cy="-8" rx="24" ry="30" fill="#E3F2FD" stroke="#90CAF9" stroke-width="2" opacity="0.9" transform="rotate(-25 -8 -8)"/>
-    <ellipse cx="38" cy="-8" rx="24" ry="30" fill="#E3F2FD" stroke="#90CAF9" stroke-width="2" opacity="0.9" transform="rotate(25 38 -8)"/>
+  <!-- Bee (Large and visible) -->
+  <g class="animated" transform="translate(390, 110)" style="animation-delay: 0.3s">
+    <!-- Wings -->
+    <ellipse cx="-10" cy="-5" rx="20" ry="25" fill="#E3F2FD" stroke="#64B5F6" stroke-width="2" opacity="0.9" transform="rotate(-20 -10 -5)"/>
+    <ellipse cx="35" cy="-5" rx="20" ry="25" fill="#E3F2FD" stroke="#64B5F6" stroke-width="2" opacity="0.9" transform="rotate(20 35 -5)"/>
 
-    <!-- Bee body -->
-    <ellipse cx="15" cy="15" rx="30" ry="38" fill="#FFD54F"/>
+    <!-- Body -->
+    <ellipse cx="12" cy="12" rx="25" ry="32" fill="#FFD54F"/>
 
-    <!-- Bee stripes -->
-    <ellipse cx="15" cy="3" rx="28" ry="9" fill="#3E2723"/>
-    <ellipse cx="15" cy="27" rx="28" ry="9" fill="#3E2723"/>
+    <!-- Stripes -->
+    <rect x="-13" y="2" width="50" height="6" rx="3" fill="#3E2723"/>
+    <rect x="-13" y="18" width="50" height="6" rx="3" fill="#3E2723"/>
 
-    <!-- Bee head -->
-    <circle cx="15" cy="-18" r="18" fill="#FFA726"/>
+    <!-- Head -->
+    <circle cx="12" cy="-15" r="15" fill="#FFA726"/>
 
-    <!-- Bee face -->
-    <ellipse cx="9" cy="-20" rx="5" ry="7" fill="#3E2723"/>
-    <ellipse cx="21" cy="-20" rx="5" ry="7" fill="#3E2723"/>
-    <circle cx="9" cy="-19" r="2.5" fill="white"/>
-    <circle cx="21" cy="-19" r="2.5" fill="white"/>
+    <!-- Eyes -->
+    <circle cx="7" cy="-17" r="4" fill="#3E2723"/>
+    <circle cx="17" cy="-17" r="4" fill="#3E2723"/>
+    <circle cx="7" cy="-16" r="2" fill="white"/>
+    <circle cx="17" cy="-16" r="2" fill="white"/>
 
     <!-- Smile -->
-    <path d="M10,-12 Q15,-8 20,-12" stroke="#3E2723" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M7,-10 Q12,-7 17,-10" stroke="#3E2723" stroke-width="2" fill="none" stroke-linecap="round"/>
 
-    <!-- Bee antennae -->
-    <path d="M9,-30 Q7,-38 5,-42" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <circle cx="5" cy="-44" r="3" fill="#3E2723"/>
-    <path d="M21,-30 Q23,-38 25,-42" stroke="#3E2723" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    <circle cx="25" cy="-44" r="3" fill="#3E2723"/>
-
-    <!-- Bee stinger -->
-    <path d="M15,48 L12,58 L15,56 L18,58 Z" fill="#3E2723"/>
-
-    <!-- Motion lines -->
-    <path d="M-25,10 L-35,8" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-    <path d="M-25,20 L-35,22" stroke="#FFD54F" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    <!-- Antennae -->
+    <line x1="7" y1="-27" x2="3" y2="-35" stroke="#3E2723" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="3" cy="-37" r="3" fill="#3E2723"/>
+    <line x1="17" y1="-27" x2="21" y2="-35" stroke="#3E2723" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="21" cy="-37" r="3" fill="#3E2723"/>
   </g>
 
   <!-- Text: CONTENT HIVE -->
-  <text x="300" y="340" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
+  <text x="300" y="290" font-family="Arial, sans-serif" font-size="58" font-weight="800" text-anchor="middle" fill="#7CB342" letter-spacing="4">CONTENT HIVE</text>
 
   <!-- Subtitle -->
-  <text x="300" y="380" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
+  <text x="300" y="330" font-family="Arial, sans-serif" font-size="16" font-weight="500" text-anchor="middle" fill="#9E9E9E" letter-spacing="3">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
 </svg>
