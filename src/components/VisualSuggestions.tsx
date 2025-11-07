@@ -39,7 +39,7 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-semibold text-gray-800 dark:text-white text-sm">{suggestion.title}</h3>
-                <p className="text-xs text-gray-500 mt-1">{suggestion.description}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">{suggestion.description}</p>
               </div>
             </div>
 
@@ -77,13 +77,13 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
             </button>
 
             {expandedId === suggestion.id && (
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-3 mb-2 animate-fade-in">
-                <p className="text-xs text-gray-700 leading-relaxed mb-3">
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:bg-[#263B4D] rounded-xl p-3 mb-2 animate-fade-in">
+                <p className="text-xs text-gray-700 dark:text-white leading-relaxed mb-3">
                   {suggestion.prompt}
                 </p>
                 <button
                   onClick={() => handleCopyPrompt(suggestion.id, suggestion.prompt)}
-                  className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white hover:bg-gray-50 rounded-xl transition-all text-xs font-semibold text-gray-700 border border-gray-200 hover:border-blue-300 hover:shadow-md transform hover:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-white dark:bg-[#263B4D] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-all text-xs font-semibold text-gray-700 dark:text-white border border-gray-200 dark:border-gray-600 hover:border-blue-300 hover:shadow-md transform hover:scale-[0.98]"
                 >
                   {copiedId === suggestion.id ? (
                     <>
