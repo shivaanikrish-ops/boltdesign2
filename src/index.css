@@ -13,27 +13,18 @@
     min-height: 100vh;
   }
 
-  .dark body {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1f2937 100%);
-    color: #e5e7eb;
-  }
-
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #222222;
     letter-spacing: -0.02em;
   }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: #e5e7eb;
-  }
 }
 
 @layer components {
   .input-orange {
-    @apply bg-white dark:bg-gray-800 border-[1.5px] border-[#196E7F] dark:border-[#99D852] text-gray-900 dark:text-gray-100 rounded-2xl px-4 py-3
-           focus:outline-none focus:ring-0 focus:border-[#196E7F] dark:focus:border-[#99D852] transition-all duration-300;
+    @apply bg-white border-[1.5px] border-[#196E7F] text-gray-900 rounded-2xl px-4 py-3
+           focus:outline-none focus:ring-0 focus:border-[#196E7F] transition-all duration-300;
     box-shadow: 0 0 0 0 rgba(25, 110, 127, 0);
   }
 
@@ -46,7 +37,7 @@
   }
 
   .card-float {
-    @apply bg-white/80 dark:bg-gray-800/80 rounded-[20px] transition-all duration-300 relative;
+    @apply bg-white/80 rounded-[20px] transition-all duration-300 relative;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -92,7 +83,7 @@
   }
 
   .suggestion-card {
-    @apply bg-white dark:bg-gray-800 rounded-[16px] border border-transparent p-5 cursor-pointer
+    @apply bg-white rounded-[16px] border border-transparent p-5 cursor-pointer
            transition-all duration-300 relative;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
