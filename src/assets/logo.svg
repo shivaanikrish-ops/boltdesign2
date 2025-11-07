@@ -1,12 +1,12 @@
-<svg width="600" height="450" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="600" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Honey jar lid -->
   <path d="M242 30 C242 30 242 25 245 22 L355 22 C358 25 358 30 358 30 L358 50 C358 55 353 60 348 60 L252 60 C247 60 242 55 242 50 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
 
   <!-- Jar opening -->
   <path d="M235 60 C235 55 240 50 245 50 L355 50 C360 50 365 55 365 60 L365 80 C365 80 360 85 355 85 L245 85 C240 85 235 80 235 80 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
 
-  <!-- Main jar body -->
-  <path d="M235 80 L245 95 C245 95 245 280 245 280 C245 290 253 298 263 298 L337 298 C347 298 355 290 355 280 L355 95 L365 80 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="6"/>
+  <!-- Main jar body (made shorter) -->
+  <path d="M235 80 L245 95 C245 95 245 180 245 180 C245 190 253 198 263 198 L337 198 C347 198 355 190 355 180 L355 95 L365 80 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="6"/>
 
   <!-- Honey drip left -->
   <path d="M260 85 C260 85 258 90 258 95 C258 100 258 105 258 110 C258 115 263 118 268 118 C268 118 268 95 268 95" fill="#F9A825"/>
@@ -14,8 +14,8 @@
   <!-- Honey drip right -->
   <path d="M340 85 C340 85 342 90 342 95 C342 100 342 105 342 110 C342 115 337 118 332 118 C332 118 332 95 332 95" fill="#F9A825"/>
 
-  <!-- Honeycomb hexagons in jar -->
-  <g transform="translate(280, 170)">
+  <!-- Honeycomb hexagons in jar (repositioned for shorter jar) -->
+  <g transform="translate(280, 130)">
     <!-- Center hexagon -->
     <path d="M0,-15 L13,-7.5 L13,7.5 L0,15 L-13,7.5 L-13,-7.5 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
     <!-- Top hexagon -->
@@ -46,8 +46,8 @@
   <circle cx="465" cy="82" r="4" fill="#5D4037"/>
 
   <!-- Text: CONTENT HIVE -->
-  <text x="300" y="370" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
+  <text x="300" y="270" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
 
   <!-- Subtitle -->
-  <text x="300" y="410" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
+  <text x="300" y="310" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
 </svg>
