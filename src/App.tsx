@@ -721,19 +721,19 @@ function App() {
               <p className="text-gray-600">Manage your content calendar and set reminders</p>
             </div>
             <div className="mb-6 animate-fade-in">
-              <div className="card-float p-6 max-w-2xl">
+              <div className="card-float p-8">
                 <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
                       Smart Schedule Planner
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      Create recurring posting schedules automatically
+                    <p className="text-base text-gray-600">
+                      Create recurring posting schedules automatically with AI-powered timing recommendations
                     </p>
                   </div>
                   <button
                     onClick={() => setShowSmartPlanner(true)}
-                    className="btn-primary mt-auto"
+                    className="btn-primary w-full py-4 text-lg"
                   >
                     Generate Schedule
                   </button>
