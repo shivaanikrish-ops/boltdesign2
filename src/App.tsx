@@ -619,6 +619,22 @@ function App() {
                   onDeleteContent={handleDeleteContent}
                 />
                 <InputSection onGenerate={handleGenerate} isGenerating={isGenerating} />
+
+                <div className="card-float p-6 mt-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-800 mb-1">Your Saved Content</h3>
+                      <p className="text-sm text-gray-600">Access all your previously saved content</p>
+                    </div>
+                    <button
+                      onClick={() => setShowSavedContentModal(true)}
+                      className="btn-secondary flex items-center gap-2"
+                    >
+                      <FolderOpen className="w-5 h-5" />
+                      View Saved Content ({contentHistory.length})
+                    </button>
+                  </div>
+                </div>
               </>
             )}
 
@@ -636,29 +652,24 @@ function App() {
                       <div className="flex items-center justify-between">
                         <div>
                           <h3 className="text-lg font-bold text-gray-800 mb-1">Save Your Content</h3>
-                          <p className="text-sm text-gray-600">Save this generated content for future use</p>
+                          <p className="text-sm text-gray-600">Save this generated content and start fresh</p>
                         </div>
-                        <div className="flex gap-3">
-                          <button
-                            onClick={() => setShowSavedContentModal(true)}
-                            className="btn-secondary flex items-center gap-2"
-                          >
-                            <FolderOpen className="w-5 h-5" />
-                            View Saved
-                          </button>
-                          <button
-                            onClick={async () => {
-                              setIsSaving(true);
-                              await saveContentToHistory(currentDescription, generatedContent, imageUrl, resizedImages);
-                              setIsSaving(false);
-                            }}
-                            disabled={isSaving}
-                            className="btn-primary flex items-center gap-2"
-                          >
-                            <Save className="w-5 h-5" />
-                            {isSaving ? 'Saving...' : 'Save Content'}
-                          </button>
-                        </div>
+                        <button
+                          onClick={async () => {
+                            setIsSaving(true);
+                            await saveContentToHistory(currentDescription, generatedContent, imageUrl, resizedImages);
+                            setIsSaving(false);
+                            setCurrentStep(1);
+                            setGeneratedContent(null);
+                            setImageUrl(null);
+                            setResizedImages(undefined);
+                          }}
+                          disabled={isSaving}
+                          className="btn-primary flex items-center gap-2"
+                        >
+                          <Save className="w-5 h-5" />
+                          {isSaving ? 'Saving...' : 'Save & Start New'}
+                        </button>
                       </div>
                     </div>
 
