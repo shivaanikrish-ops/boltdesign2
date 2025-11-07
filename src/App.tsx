@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen } from 'lucide-react';
+import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, FileText } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -544,6 +544,48 @@ function App() {
             <Video className="w-5 h-5" />
             {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F]">Video Tips</span>}
           </button>
+
+          <div className={`border-t border-gray-200/50 ${sidebarCollapsed ? 'mx-2' : 'mx-0'} pt-4`}></div>
+
+          <button
+            onClick={() => setShowSavedContentModal(true)}
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 glass-button`}
+            title={sidebarCollapsed ? 'Saved Content' : ''}
+          >
+            <FolderOpen className="w-5 h-5" />
+            {!sidebarCollapsed && (
+              <div className="flex items-center justify-between w-full">
+                <span className="font-semibold text-[#7CB342]">Saved Content</span>
+                {contentHistory.length > 0 && (
+                  <span className="text-xs bg-[#7CB342] text-white rounded-full px-2 py-0.5">{contentHistory.length}</span>
+                )}
+              </div>
+            )}
+          </button>
+
+          <button
+            onClick={() => {
+              setCurrentView('strategy');
+              setTimeout(() => {
+                const plansSection = document.getElementById('content-plans-section');
+                if (plansSection) {
+                  plansSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }}
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 glass-button`}
+            title={sidebarCollapsed ? 'Content Plans' : ''}
+          >
+            <FileText className="w-5 h-5" />
+            {!sidebarCollapsed && (
+              <div className="flex items-center justify-between w-full">
+                <span className="font-semibold text-[#42A5F5]">Content Plans</span>
+                {contentPlans.length > 0 && (
+                  <span className="text-xs bg-[#42A5F5] text-white rounded-full px-2 py-0.5">{contentPlans.length}</span>
+                )}
+              </div>
+            )}
+          </button>
         </nav>
         {!sidebarCollapsed && (
           <div className="p-6 border-t border-gray-200/50">
@@ -582,22 +624,6 @@ function App() {
                   onDeleteContent={handleDeleteContent}
                 />
                 <InputSection onGenerate={handleGenerate} isGenerating={isGenerating} />
-
-                <div className="card-float p-6 mt-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-800 mb-1">Your Saved Content</h3>
-                      <p className="text-sm text-gray-600">Access all your previously saved content</p>
-                    </div>
-                    <button
-                      onClick={() => setShowSavedContentModal(true)}
-                      className="btn-secondary flex items-center gap-2"
-                    >
-                      <FolderOpen className="w-5 h-5" />
-                      View Saved Content ({contentHistory.length})
-                    </button>
-                  </div>
-                </div>
               </>
             )}
 

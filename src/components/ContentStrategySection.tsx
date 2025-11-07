@@ -92,7 +92,7 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
       </div>
 
       {generatedPlans.length > 0 && (
-        <div className="space-y-4">
+        <div className="space-y-4" id="content-plans-section">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Your Generated Content Plans</h3>
           {generatedPlans.map((plan) => (
             <div key={plan.id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
