@@ -73,45 +73,47 @@ function App() {
     loadScheduledPosts();
     loadContentPlans();
     loadAlarms();
-
-    const alarmCheckInterval = setInterval(() => {
-      checkAlarms();
-    }, 1000);
-
-    return () => clearInterval(alarmCheckInterval);
   }, []);
 
-  const checkAlarms = () => {
-    const now = new Date();
-    alarms.forEach((alarm) => {
-      if (alarm.status === 'active' && !triggeredAlarms.has(alarm.id)) {
-        const alarmTime = new Date(alarm.alarm_datetime);
-        const timeDiff = alarmTime.getTime() - now.getTime();
+  useEffect(() => {
+    const checkAlarms = () => {
+      const now = new Date();
+      console.log('Checking alarms, total alarms:', alarms.length);
+      alarms.forEach((alarm) => {
+        if (alarm.status === 'active' && !triggeredAlarms.has(alarm.id)) {
+          const alarmTime = new Date(alarm.alarm_datetime);
+          const timeDiff = alarmTime.getTime() - now.getTime();
+          console.log(`Alarm "${alarm.title}": timeDiff = ${timeDiff}ms`);
 
-        if (timeDiff <= 0 && timeDiff > -5000) {
-          console.log('ALARM TRIGGERED:', alarm.title, alarm);
-          setTriggeredAlarms((prev) => new Set(prev).add(alarm.id));
-          setRingingAlarm(alarm);
+          if (timeDiff <= 0 && timeDiff > -5000) {
+            console.log('ALARM TRIGGERED:', alarm.title, alarm);
+            setTriggeredAlarms((prev) => new Set(prev).add(alarm.id));
+            setRingingAlarm(alarm);
 
-          if (alarm.sound_enabled) {
-            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvHZiTYIGGe778edTgwOUKzn77RgGwU7k9n0yHMpBSh+zPLaizsKElyx6+yhUhELSpzh8bllHAUugdDx2YYzBxdqvO/InUwNDlOu6O+yXhoEOpTX88p0KQUngM3y2Ys5CRJbr+rspFURCkud4fG5ZBsCLYHQ8dqHMwcXa7vvyp1MDQ5Tr+jvsV0aBDuU1/PKcygFKIDN8tmKOQkSW6/q7KVVEQNMV+Dxu2QcBS+B0PHahzMHF2y878qdTA0OVK/o77BdGgQ7lNfzyn4pBSiAzfLZijkJEVuw6uylVhEDTVjh8bpjHAYugdDx2ocxBxZqvO/KnksODVKt6O+xXRoEO5TX88p+KAUogM3y2Yo4AxFbsOrspVYTAkxZ4fG6YhwFLoHQ8dmHMQcWarzuyp5KDw1Srujv');
-            audio.play().catch(e => console.log('Could not play sound:', e));
-          }
+            if (alarm.sound_enabled) {
+              const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvHZiTYIGGe778edTgwOUKzn77RgGwU7k9n0yHMpBSh+zPLaizsKElyx6+yhUhELSpzh8bllHAUugdDx2YYzBxdqvO/InUwNDlOu6O+yXhoEOpTX88p0KQUngM3y2Ys5CRJbr+rspFURCkud4fG5ZBsCLYHQ8dqHMwcXa7vvyp1MDQ5Tr+jvsV0aBDuU1/PKcygFKIDN8tmKOQkSW6/q7KVVEQNMV+Dxu2QcBS+B0PHahzMHF2y878qdTA0OVK/o77BdGgQ7lNfzyn4pBSiAzfLZijkJEVuw6uylVhEDTVjh8bpjHAYugdDx2ocxBxZqvO/KnksODVKt6O+xXRoEO5TX88p+KAUogM3y2Yo4AxFbsOrspVYTAkxZ4fG6YhwFLoHQ8dmHMQcWarzuyp5KDw1Srujv');
+              audio.play().catch(e => console.log('Could not play sound:', e));
+            }
 
-          if (alarm.notification_enabled && 'Notification' in window) {
-            Notification.requestPermission().then(permission => {
-              if (permission === 'granted') {
-                new Notification('Alarm: ' + alarm.title, {
-                  body: alarm.notes || 'Your alarm is ringing!',
-                  icon: '/logo-icon.svg'
-                });
-              }
-            });
+            if (alarm.notification_enabled && 'Notification' in window) {
+              Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                  new Notification('Alarm: ' + alarm.title, {
+                    body: alarm.notes || 'Your alarm is ringing!',
+                    icon: '/logo-icon.svg'
+                  });
+                }
+              });
+            }
           }
         }
-      }
-    });
-  };
+      });
+    };
+
+    const alarmCheckInterval = setInterval(checkAlarms, 1000);
+
+    return () => clearInterval(alarmCheckInterval);
+  }, [alarms, triggeredAlarms]);
 
   const loadBrandProfile = async () => {
     const { data } = await supabase
