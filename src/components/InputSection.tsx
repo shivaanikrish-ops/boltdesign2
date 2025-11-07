@@ -157,23 +157,23 @@ export function InputSection({ onGenerate, isGenerating }: InputSectionProps) {
             disabled={isGenerating}
           />
           {error && (
-            <div className="mt-2 flex items-start gap-2 p-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-2xl">
-              <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
+            <div className="mt-2 flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-2xl">
+              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700">{error}</p>
             </div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-[#3C3C3C] dark:text-gray-200 mb-2">
+          <label className="block text-sm font-semibold text-[#3C3C3C] mb-2">
             Product Image (Optional)
           </label>
 
           {!imageUrl ? (
-            <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-2xl cursor-pointer hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300">
+            <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:border-gray-400 hover:bg-gray-50 transition-all duration-300">
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <Upload className="w-10 h-10 text-gray-400 dark:text-gray-300 mb-3" />
-                <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Click to upload image</p>
+                <Upload className="w-10 h-10 text-gray-400 mb-3" />
+                <p className="text-sm text-gray-600 font-medium">Click to upload image</p>
               </div>
               <input
                 type="file"

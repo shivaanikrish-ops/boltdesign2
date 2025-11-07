@@ -487,7 +487,7 @@ function App() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="w-12 h-12 bg-white dark:bg-[#1B2433] rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer p-1"
+              className="w-12 h-12 bg-white dark:bg-gray-700 rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer p-1"
             >
               <img src="/logo.svg" alt="Content Hive Logo" className="w-full h-full" />
             </button>
@@ -619,7 +619,7 @@ function App() {
         {currentView === 'generator' ? (
           <>
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-white dark:bg-[#1B2433] rounded-2xl mb-4 shadow-lg p-3">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-white dark:bg-gray-800 rounded-2xl mb-4 shadow-lg p-3">
                 <img src="/logo.svg" alt="Content Hive Logo" className="w-full h-full" />
               </div>
               <h2 className="text-4xl font-bold text-[#7CB342] dark:text-[#99D852] mb-2">Content Hive</h2>

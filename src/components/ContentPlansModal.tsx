@@ -45,13 +45,13 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
 
         <div className="p-6 border-b">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search content plans..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-[#42A5F5] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#42A5F5] focus:border-transparent"
             />
           </div>
         </div>
@@ -62,10 +62,10 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
               <div className="w-20 h-20 bg-gradient-to-br from-[#42A5F5] to-[#7CB342] rounded-[20px] flex items-center justify-center mx-auto mb-4 opacity-50">
                 <FileText className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-2">
+              <h3 className="text-lg font-semibold text-gray-600 mb-2">
                 {searchQuery ? 'No matching plans found' : 'No content plans yet'}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm text-gray-500">
                 {searchQuery ? 'Try a different search term' : 'Generate content plans to see them here'}
               </p>
             </div>
@@ -74,20 +74,20 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
               {filteredPlans.map((plan) => (
                 <div
                   key={plan.id}
-                  className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-md transition-all"
+                  className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all"
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-[#42A5F5] to-[#7CB342] rounded-lg flex items-center justify-center flex-shrink-0">
                       <FileText className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Content Plan</h4>
+                      <h4 className="text-lg font-bold text-gray-900 mb-4">Content Plan</h4>
 
                       <div className="mb-4">
-                        <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Suggested Topics:</h5>
+                        <h5 className="text-sm font-semibold text-gray-700 mb-2">Suggested Topics:</h5>
                         <div className="flex flex-wrap gap-2">
                           {plan.topics.map((topic, idx) => (
-                            <span key={idx} className="px-3 py-1 bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded-full text-sm">
+                            <span key={idx} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">
                               {topic}
                             </span>
                           ))}
@@ -96,17 +96,17 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
 
                       {plan.schedule.length > 0 && (
                         <div className="mb-4">
-                          <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Posting Schedule:</h5>
+                          <h5 className="text-sm font-semibold text-gray-700 mb-2">Posting Schedule:</h5>
                           <div className="space-y-2">
                             {plan.schedule.slice(0, 5).map((item, idx) => (
                               <div key={idx} className="flex items-center gap-3 text-sm">
-                                <Calendar className="w-4 h-4 text-gray-400 dark:text-gray-500" />
-                                <span className="text-gray-500 dark:text-gray-300 font-medium">{item.date}</span>
-                                <span className="text-gray-700 dark:text-gray-300">{item.topic}</span>
+                                <Calendar className="w-4 h-4 text-gray-400" />
+                                <span className="text-gray-500 font-medium">{item.date}</span>
+                                <span className="text-gray-700">{item.topic}</span>
                               </div>
                             ))}
                             {plan.schedule.length > 5 && (
-                              <p className="text-sm text-gray-500 dark:text-gray-400 italic">+ {plan.schedule.length - 5} more posts</p>
+                              <p className="text-sm text-gray-500 italic">+ {plan.schedule.length - 5} more posts</p>
                             )}
                           </div>
                         </div>
@@ -114,7 +114,7 @@ export function ContentPlansModal({ isOpen, onClose, contentPlans }: ContentPlan
 
                       {plan.insights.length > 0 && (
                         <div>
-                          <h5 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">AI Insights:</h5>
+                          <h5 className="text-sm font-semibold text-gray-700 mb-2">AI Insights:</h5>
                           <ul className="space-y-1">
                             {plan.insights.map((insight, idx) => (
                               <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">

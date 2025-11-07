@@ -63,7 +63,7 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
 
   return (
     <div className="card-float p-6 mb-6 animate-fade-in">
-      <div className="gradient-header-bg dark:bg-[#263B4D] mb-6 inline-block">
+      <div className="gradient-header-bg mb-6 inline-block">
         <h2 className="text-xl font-bold gradient-text">Platform Previews</h2>
       </div>
 
@@ -76,7 +76,7 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
                 <div className={`w-7 h-7 bg-gradient-to-br ${platform.color} rounded-lg flex items-center justify-center shadow-sm`}>
                   <Icon className="w-3.5 h-3.5 text-white" />
                 </div>
-                <span className="font-semibold text-sm text-gray-800 dark:text-white">{platform.name}</span>
+                <span className="font-semibold text-sm text-gray-800">{platform.name}</span>
               </div>
 
               <div className={`${platform.bgColor} rounded-xl p-4 flex-1 border border-gray-200 card-float`}>
@@ -94,8 +94,8 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
                   <div className="flex items-start gap-2">
                     <div className="w-7 h-7 bg-gradient-to-br from-gray-300 to-gray-400 rounded-full flex-shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-xs text-gray-800 dark:text-white">Your Brand</p>
-                      <p className="text-xs text-gray-700 dark:text-gray-200 whitespace-pre-wrap break-words mt-1 leading-relaxed">
+                      <p className="font-semibold text-xs text-gray-800">Your Brand</p>
+                      <p className="text-xs text-gray-700 whitespace-pre-wrap break-words mt-1 leading-relaxed">
                         {platform.content}
                       </p>
                     </div>
@@ -105,7 +105,7 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
 
               <button
                 onClick={() => handleCopy(platform.name, platform.content)}
-                className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-gray-100 to-gray-200 dark:bg-[#263B4D] hover:from-gray-200 hover:to-gray-300 rounded-xl transition-all text-xs font-semibold text-gray-700 dark:text-white transform hover:scale-[0.98]"
+                className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 rounded-xl transition-all text-xs font-semibold text-gray-700 transform hover:scale-[0.98]"
               >
                 {copiedPlatform === platform.name ? (
                   <>

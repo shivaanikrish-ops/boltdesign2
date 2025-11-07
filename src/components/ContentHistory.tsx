@@ -23,7 +23,7 @@ export function ContentHistory({ history, onLoadContent, onDeleteContent }: Cont
           <div className="flex items-center gap-2">
             <History className="w-4 h-4 text-orange-600" />
             <h2 className="text-xl font-bold gradient-text">Content History</h2>
-            <span className="text-xs font-medium text-gray-600 dark:text-gray-300 ml-2">({history.length})</span>
+            <span className="text-xs font-medium text-gray-600 ml-2">({history.length})</span>
           </div>
         </div>
         <div className={`transform transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
@@ -43,10 +43,10 @@ export function ContentHistory({ history, onLoadContent, onDeleteContent }: Cont
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-800 dark:text-white truncate">
+                  <p className="text-sm font-medium text-gray-800 truncate">
                     {item.description}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">
+                  <p className="text-xs text-gray-500 mt-1">
                     {new Date(item.created_at).toLocaleDateString()} at{' '}
                     {new Date(item.created_at).toLocaleTimeString()}
                   </p>
