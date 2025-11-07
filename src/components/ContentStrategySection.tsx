@@ -9,7 +9,7 @@ interface ContentStrategySectionProps {
 export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner }: ContentStrategySectionProps) {
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="max-w-2xl">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] to-[#4CAF50] rounded-xl flex items-center justify-center">
@@ -48,47 +48,6 @@ export function ContentStrategySection({ onOpenPlanGenerator, onOpenSmartPlanner
           >
             <Plus className="w-5 h-5" />
             Generate Content Plan
-          </button>
-        </div>
-
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#42A5F5] to-[#1976D2] rounded-xl flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-gray-900">Smart Schedule Planner</h3>
-              <p className="text-sm text-gray-600">Recurring post automation</p>
-            </div>
-          </div>
-
-          <div className="space-y-3 mb-6">
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-blue-600 font-bold">✓</span>
-              </div>
-              <p className="text-sm text-gray-700">Set up daily, weekly, or monthly schedules</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-blue-600 font-bold">✓</span>
-              </div>
-              <p className="text-sm text-gray-700">Automatic recurring post generation</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <span className="text-xs text-blue-600 font-bold">✓</span>
-              </div>
-              <p className="text-sm text-gray-700">Flexible date ranges and repetition patterns</p>
-            </div>
-          </div>
-
-          <button
-            onClick={onOpenSmartPlanner}
-            className="w-full py-3 bg-gradient-to-r from-[#42A5F5] to-[#1976D2] text-white font-semibold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
-          >
-            <Plus className="w-5 h-5" />
-            Create Smart Schedule
           </button>
         </div>
       </div>
