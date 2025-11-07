@@ -648,31 +648,6 @@ function App() {
 
                     {postOutline && <PostOutline outline={postOutline} />}
 
-                    <div className="card-float p-6 mb-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-lg font-bold text-gray-800 mb-1">Save Your Content</h3>
-                          <p className="text-sm text-gray-600">Save this generated content and start fresh</p>
-                        </div>
-                        <button
-                          onClick={async () => {
-                            setIsSaving(true);
-                            await saveContentToHistory(currentDescription, generatedContent, imageUrl, resizedImages);
-                            setIsSaving(false);
-                            setCurrentStep(1);
-                            setGeneratedContent(null);
-                            setImageUrl(null);
-                            setResizedImages(undefined);
-                          }}
-                          disabled={isSaving}
-                          className="btn-primary flex items-center gap-2"
-                        >
-                          <Save className="w-5 h-5" />
-                          {isSaving ? 'Saving...' : 'Save & Start New'}
-                        </button>
-                      </div>
-                    </div>
-
                     <CaptionSelector content={generatedContent} onSelectTone={handleSelectTone} />
                     <HashtagDisplay
                       hashtags={generatedContent.hashtags}
@@ -707,6 +682,31 @@ function App() {
                       imageUrl={imageUrl}
                       resizedImages={resizedImages}
                     />
+
+                    <div className="card-float p-6 mb-6">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-800 mb-1">Save Your Content</h3>
+                          <p className="text-sm text-gray-600">Save this generated content and start fresh</p>
+                        </div>
+                        <button
+                          onClick={async () => {
+                            setIsSaving(true);
+                            await saveContentToHistory(currentDescription, generatedContent, imageUrl, resizedImages);
+                            setIsSaving(false);
+                            setCurrentStep(1);
+                            setGeneratedContent(null);
+                            setImageUrl(null);
+                            setResizedImages(undefined);
+                          }}
+                          disabled={isSaving}
+                          className="btn-primary flex items-center gap-2"
+                        >
+                          <Save className="w-5 h-5" />
+                          {isSaving ? 'Saving...' : 'Save & Start New'}
+                        </button>
+                      </div>
+                    </div>
 
                     <div className="card-float p-6 mb-8">
                       <div className="flex flex-col gap-4">
