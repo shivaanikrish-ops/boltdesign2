@@ -50,13 +50,15 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
       play: () => {
         const beepDuration = 200;
         const pauseDuration = 100;
-        const repeats = 5;
+        const totalDuration = 5000;
+        const cycleTime = beepDuration + pauseDuration;
+        const repeats = Math.floor(totalDuration / cycleTime);
 
         for (let i = 0; i < repeats; i++) {
           setTimeout(() => {
             gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + beepDuration / 1000);
-          }, i * (beepDuration + pauseDuration));
+          }, i * cycleTime);
         }
       }
     } as any;
