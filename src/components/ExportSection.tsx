@@ -64,7 +64,7 @@ Generated at: ${new Date().toLocaleString()}
 
   return (
     <div className="card-float p-6 mt-6 animate-fade-in">
-      <div className="gradient-header-bg mb-6 inline-block">
+      <div className="gradient-header-bg dark:bg-[#263B4D] mb-6 inline-block">
         <h2 className="text-xl font-bold gradient-text">Export Your Content</h2>
       </div>
 

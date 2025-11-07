@@ -18,7 +18,7 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
 
   return (
     <div className="card-float p-6 mb-6 animate-fade-in">
-      <div className="gradient-header-bg mb-6 inline-block">
+      <div className="gradient-header-bg dark:bg-[#263B4D] mb-6 inline-block">
         <div className="flex items-center gap-3">
           <Lightbulb className="w-5 h-5 text-orange-500" />
           <h2 className="text-xl font-bold gradient-text">AI Visual Suggestions</h2>
@@ -38,17 +38,17 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
                 <Image className="w-5 h-5 text-pink-600" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-gray-800 text-sm">{suggestion.title}</h3>
+                <h3 className="font-semibold text-gray-800 dark:text-white text-sm">{suggestion.title}</h3>
                 <p className="text-xs text-gray-500 mt-1">{suggestion.description}</p>
               </div>
             </div>
 
             <div className="space-y-2 mb-3">
               <div className="flex flex-wrap gap-1.5">
-                <span className="px-2.5 py-1 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 rounded-lg text-xs font-medium">
+                <span className="px-2.5 py-1 bg-gradient-to-r from-blue-50 to-blue-100 dark:bg-[#263B4D] text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium">
                   {suggestion.style}
                 </span>
-                <span className="px-2.5 py-1 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-lg text-xs font-medium">
+                <span className="px-2.5 py-1 bg-gradient-to-r from-purple-50 to-purple-100 dark:bg-[#263B4D] text-purple-700 dark:text-purple-300 rounded-lg text-xs font-medium">
                   {suggestion.aspectRatio}
                 </span>
               </div>
@@ -56,7 +56,7 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
                 {suggestion.recommendedPlatforms.map((platform) => (
                   <span
                     key={platform}
-                    className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs"
+                    className="px-2 py-0.5 bg-gray-100 dark:bg-[#263B4D] text-gray-600 dark:text-gray-300 rounded-md text-xs"
                   >
                     {platform}
                   </span>
@@ -66,7 +66,7 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
 
             <button
               onClick={() => setExpandedId(expandedId === suggestion.id ? null : suggestion.id)}
-              className="w-full flex items-center justify-between px-3 py-2 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 rounded-xl transition-all text-xs font-medium text-gray-700 mb-2"
+              className="w-full flex items-center justify-between px-3 py-2 bg-gradient-to-r from-gray-50 to-gray-100 dark:bg-[#263B4D] hover:from-gray-100 hover:to-gray-200 rounded-xl transition-all text-xs font-medium text-gray-700 dark:text-white mb-2"
             >
               <span>🔍 AI Generation Prompt</span>
               {expandedId === suggestion.id ? (

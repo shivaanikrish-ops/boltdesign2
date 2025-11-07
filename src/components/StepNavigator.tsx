@@ -44,7 +44,7 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
                 )}
               </div>
               <div className={`text-sm font-medium ${
-                currentStep === step.number ? 'text-gray-900' : 'text-gray-400'
+                currentStep === step.number ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-500'
               }`}>
                 {step.label}
               </div>

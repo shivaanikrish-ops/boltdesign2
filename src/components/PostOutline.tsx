@@ -19,60 +19,60 @@ export function PostOutline({ outline }: PostOutlineProps) {
 
   return (
     <div className="card-float p-6 mb-6 animate-fade-in">
-      <div className="gradient-header-bg mb-6 inline-block">
+      <div className="gradient-header-bg dark:bg-[#263B4D] mb-6 inline-block">
         <div className="flex items-center gap-3">
           <FileText className="w-6 h-6 text-[#8FA6FF]" />
-          <h2 className="text-2xl font-bold text-[#3C3C3C]">Post Structure Outline</h2>
+          <h2 className="text-2xl font-bold text-[#3C3C3C] dark:text-white">Post Structure Outline</h2>
         </div>
       </div>
       <p className="text-base text-gray-600 mb-6">Optimized content strategy for maximum engagement</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="space-y-3">
-          <div className="card-float p-4 bg-gradient-to-br from-blue-50 to-cyan-50">
+          <div className="card-float p-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:bg-[#263B4D]">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 border-2 rounded-lg flex items-center justify-center bg-transparent" style={{ borderColor: '#5ABA8A' }}>
                 <Zap className="w-4 h-4" style={{ color: '#5ABA8A', fill: 'none', strokeWidth: 2 }} />
               </div>
-              <h3 className="font-semibold text-gray-800 text-base">💡 Opening Hook</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-white text-base">💡 Opening Hook</h3>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed pl-10">{outline.hook}</p>
+            <p className="text-sm text-gray-600 dark:text-white leading-relaxed pl-10">{outline.hook}</p>
           </div>
 
-          <div className="card-float p-4 bg-gradient-to-br from-purple-50 to-pink-50">
+          <div className="card-float p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:bg-[#263B4D]">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 border-2 rounded-lg flex items-center justify-center bg-transparent" style={{ borderColor: '#5ABA8A' }}>
                 <Target className="w-4 h-4" style={{ color: '#5ABA8A', fill: 'none', strokeWidth: 2 }} />
               </div>
-              <h3 className="font-semibold text-gray-800 text-base">📝 Main Message</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-white text-base">📝 Main Message</h3>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed pl-10">{outline.mainMessage}</p>
+            <p className="text-sm text-gray-600 dark:text-white leading-relaxed pl-10">{outline.mainMessage}</p>
           </div>
 
-          <div className="card-float p-4 bg-gradient-to-br from-orange-50 to-red-50">
+          <div className="card-float p-4 bg-gradient-to-br from-orange-50 to-red-50 dark:bg-[#263B4D]">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 border-2 rounded-lg flex items-center justify-center bg-transparent" style={{ borderColor: '#5ABA8A' }}>
                 <Target className="w-4 h-4" style={{ color: '#5ABA8A', fill: 'none', strokeWidth: 2 }} />
               </div>
-              <h3 className="font-semibold text-gray-800 text-base">🎯 Call-to-Action</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-white text-base">🎯 Call-to-Action</h3>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed pl-10">{outline.callToAction}</p>
+            <p className="text-sm text-gray-600 dark:text-white leading-relaxed pl-10">{outline.callToAction}</p>
           </div>
 
-          <div className="card-float p-4 bg-gradient-to-br from-green-50 to-teal-50">
+          <div className="card-float p-4 bg-gradient-to-br from-green-50 to-teal-50 dark:bg-[#263B4D]">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 border-2 rounded-lg flex items-center justify-center bg-transparent" style={{ borderColor: '#5ABA8A' }}>
                 <Clock className="w-4 h-4" style={{ color: '#5ABA8A', fill: 'none', strokeWidth: 2 }} />
               </div>
-              <h3 className="font-semibold text-gray-800 text-base">⏰ Best Time to Post</h3>
+              <h3 className="font-semibold text-gray-800 dark:text-white text-base">⏰ Best Time to Post</h3>
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed pl-10">{outline.bestTimeToPost}</p>
+            <p className="text-sm text-gray-600 dark:text-white leading-relaxed pl-10">{outline.bestTimeToPost}</p>
           </div>
         </div>
 
-        <div className="card-float p-5 bg-white">
-          <div className="gradient-header-bg mb-4 inline-block">
-            <h3 className="font-semibold text-base flex items-center gap-2">
+        <div className="card-float p-5 bg-white dark:bg-[#1B2433]">
+          <div className="gradient-header-bg dark:bg-[#263B4D] mb-4 inline-block">
+            <h3 className="font-semibold text-base flex items-center gap-2 dark:text-white">
               <FileText className="w-5 h-5" />
               Content Structure Blueprint
             </h3>
@@ -94,7 +94,7 @@ export function PostOutline({ outline }: PostOutlineProps) {
                       <Check className="w-4 h-4 check-bounce" />
                     )}
                   </div>
-                  <span className="text-sm text-gray-700 leading-relaxed flex-1">{item}</span>
+                  <span className="text-sm text-gray-700 dark:text-white leading-relaxed flex-1">{item}</span>
                 </div>
               </div>
             ))}
