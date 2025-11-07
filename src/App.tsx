@@ -720,24 +720,75 @@ function App() {
               <h2 className="text-3xl font-bold text-[#7CB342] mb-2">Schedule & Alarms</h2>
               <p className="text-gray-600">Manage your content calendar and set reminders</p>
             </div>
-            <div className="mb-6 animate-fade-in">
-              <div className="card-float p-6 max-w-2xl">
-                <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">
-                      Smart Schedule Planner
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      Create recurring posting schedules automatically
-                    </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+              <div className="lg:col-span-2 animate-fade-in">
+                <div className="card-float p-8 h-full">
+                  <div className="flex flex-col h-full">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                        Smart Schedule Planner
+                      </h3>
+                      <p className="text-base text-gray-600">
+                        Create recurring posting schedules automatically with AI-powered timing recommendations
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 mb-6">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-4 rounded-xl border border-blue-200">
+                        <div className="text-3xl font-bold text-blue-600 mb-1">52</div>
+                        <div className="text-sm text-gray-600">Max Posts</div>
+                      </div>
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl border border-green-200">
+                        <div className="text-3xl font-bold text-green-600 mb-1">3</div>
+                        <div className="text-sm text-gray-600">Frequencies</div>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-xl border border-purple-200">
+                        <div className="text-3xl font-bold text-purple-600 mb-1">5</div>
+                        <div className="text-sm text-gray-600">Best Times</div>
+                      </div>
+                    </div>
+                    <div className="flex-1 bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-200 mb-6">
+                      <h4 className="font-semibold text-gray-800 mb-3">Features</h4>
+                      <ul className="space-y-2 text-sm text-gray-700">
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 font-bold">✓</span>
+                          <span>Weekly, bi-weekly, or monthly posting schedules</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 font-bold">✓</span>
+                          <span>AI-recommended posting times for maximum engagement</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 font-bold">✓</span>
+                          <span>Customize your preferred days and times</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-green-500 font-bold">✓</span>
+                          <span>Schedule up to 52 posts at once</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <button
+                      onClick={() => setShowSmartPlanner(true)}
+                      className="btn-primary mt-auto text-lg py-4"
+                    >
+                      Generate Schedule
+                    </button>
                   </div>
-                  <button
-                    onClick={() => setShowSmartPlanner(true)}
-                    className="btn-primary mt-auto"
-                  >
-                    Generate Schedule
-                  </button>
                 </div>
+              </div>
+              <div>
+                <ScheduledPostsList
+                  scheduledPosts={scheduledPosts}
+                  plannedPosts={plannedPosts}
+                  selectedDate={selectedDate}
+                  onEdit={handleEditScheduledPost}
+                  onDelete={handleDeletePost}
+                  onSetAlarm={(post) => {
+                    setLinkedPostForAlarm(post);
+                    setShowAlarmModal(true);
+                  }}
+                />
               </div>
             </div>
 
@@ -753,29 +804,14 @@ function App() {
               />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-              <div className="lg:col-span-2">
-                <Calendar
-                  scheduledPosts={scheduledPosts}
-                  plannedPosts={plannedPosts}
-                  onDateSelect={setSelectedDate}
-                  onPostClick={handleEditScheduledPost}
-                  selectedDate={selectedDate}
-                />
-              </div>
-              <div>
-                <ScheduledPostsList
-                  scheduledPosts={scheduledPosts}
-                  plannedPosts={plannedPosts}
-                  selectedDate={selectedDate}
-                  onEdit={handleEditScheduledPost}
-                  onDelete={handleDeletePost}
-                  onSetAlarm={(post) => {
-                    setLinkedPostForAlarm(post);
-                    setShowAlarmModal(true);
-                  }}
-                />
-              </div>
+            <div className="mb-6">
+              <Calendar
+                scheduledPosts={scheduledPosts}
+                plannedPosts={plannedPosts}
+                onDateSelect={setSelectedDate}
+                onPostClick={handleEditScheduledPost}
+                selectedDate={selectedDate}
+              />
             </div>
           </>
         ) : currentView === 'strategy' ? (
