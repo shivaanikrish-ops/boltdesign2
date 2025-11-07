@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, Menu } from 'lucide-react';
+import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -485,7 +485,7 @@ function App() {
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
               className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
             >
-              {sidebarCollapsed ? <Menu className="w-6 h-6 text-white" /> : <Sparkles className="w-6 h-6 text-white" />}
+              <Sparkles className="w-6 h-6 text-white" />
             </button>
             {!sidebarCollapsed && (
               <div>
