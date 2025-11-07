@@ -158,7 +158,7 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
         </div>
         <button
           onClick={onAddAlarm}
-          className="px-4 py-2 bg-gradient-to-r from-[#FFD54F] to-[#FFC107] text-gray-900 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+          className="px-4 py-2 bg-gradient-to-r from-[#FFD54F] to-[#FFC107] text-white rounded-lg font-semibold hover:shadow-lg transition-all flex items-center gap-2"
         >
           <Plus className="w-5 h-5" />
           Add Alarm

@@ -61,7 +61,7 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
       </div>
       <div className="text-center mt-6 relative">
         <div className="inline-block bg-[#FFD54F] px-4 py-2 rounded-lg shadow-md">
-          <p className="text-sm font-semibold text-gray-800">
+          <p className="text-sm font-semibold text-white">
             ✨ PRESS THE NUMBERS TO NAVIGATE BACK OR FORTH ✨
           </p>
         </div>
