@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Bell, Volume2, VolumeX } from 'lucide-react';
+import { X, Bell, Volume2, VolumeX, AlertCircle } from 'lucide-react';
 import type { ScheduledPost, PlannedPost } from '../types';
 
 interface AlarmModalProps {
@@ -188,6 +188,15 @@ export function AlarmModal({ isOpen, onClose, onCreateAlarm, linkedPost }: Alarm
                   <div className="text-xs text-gray-500">Show a browser notification (requires permission)</div>
                 </div>
               </label>
+            </div>
+          </div>
+
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <div className="flex gap-3">
+              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-amber-800">
+                <span className="font-semibold">Important:</span> This tab must remain open for the alarm to work. Closing the tab will prevent the alarm from triggering.
+              </p>
             </div>
           </div>
 
