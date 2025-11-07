@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen } from 'lucide-react';
+import { Sparkles, CalendarDays, Video, Lightbulb, Save, FolderOpen, Menu } from 'lucide-react';
 import { InputSection } from './components/InputSection';
 import { CaptionSelector } from './components/CaptionSelector';
 import { HashtagDisplay } from './components/HashtagDisplay';
@@ -59,6 +59,7 @@ function App() {
   const [linkedPostForAlarm, setLinkedPostForAlarm] = useState<ScheduledPost | PlannedPost | undefined>();
   const [showSavedContentModal, setShowSavedContentModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     loadBrandProfile();
@@ -477,68 +478,78 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFFF7] flex">
-      <aside className="w-60 bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass relative overflow-hidden">
+      <aside className={`bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass relative overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'w-20' : 'w-60'}`}>
         <div className="p-6 border-b border-gray-200/50">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg">
-              <Sparkles className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Content Hive</h1>
-              <p className="text-xs text-gray-500 font-medium">AI Content Creator</p>
-            </div>
+            <button
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              className="w-12 h-12 bg-gradient-to-br from-[#7CB342] via-[#4CAF50] to-[#42A5F5] rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer"
+            >
+              {sidebarCollapsed ? <Menu className="w-6 h-6 text-white" /> : <Sparkles className="w-6 h-6 text-white" />}
+            </button>
+            {!sidebarCollapsed && (
+              <div>
+                <h1 className="text-xl font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Content Hive</h1>
+                <p className="text-xs text-gray-500 font-medium">AI Content Creator</p>
+              </div>
+            )}
           </div>
         </div>
-        <nav className="flex-1 p-6 space-y-4">
+        <nav className={`flex-1 p-6 space-y-4 ${sidebarCollapsed ? 'px-3' : ''}`}>
           <button
             onClick={() => setCurrentView('generator')}
-            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'generator'
                 ? 'glass-button-active shadow-lg'
                 : 'glass-button'
             }`}
+            title={sidebarCollapsed ? 'Content Generator' : ''}
           >
             <Sparkles className="w-5 h-5" />
-            <span className="font-semibold text-[#7CB342]">Content Generator</span>
+            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342]">Content Generator</span>}
           </button>
           <button
             onClick={() => setCurrentView('schedule')}
-            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'schedule'
                 ? 'glass-button-active shadow-lg'
                 : 'glass-button'
             }`}
+            title={sidebarCollapsed ? 'Schedule & Alarms' : ''}
           >
             <CalendarDays className="w-5 h-5" />
-            <span className="font-semibold text-[#FFD54F]">Schedule & Alarms</span>
+            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F]">Schedule & Alarms</span>}
           </button>
           <button
             onClick={() => setCurrentView('strategy')}
-            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'strategy'
                 ? 'glass-button-active shadow-lg'
                 : 'glass-button'
             }`}
+            title={sidebarCollapsed ? 'AI Content Strategy' : ''}
           >
             <Lightbulb className="w-5 h-5" />
-            <span className="font-semibold text-[#7CB342]">AI Content Strategy</span>
+            {!sidebarCollapsed && <span className="font-semibold text-[#7CB342]">AI Content Strategy</span>}
           </button>
           <button
             onClick={() => setCurrentView('video')}
-            className={`w-full flex items-center gap-3 px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+            className={`w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'gap-3'} px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
               currentView === 'video'
                 ? 'glass-button-active shadow-lg'
                 : 'glass-button'
             }`}
+            title={sidebarCollapsed ? 'Video Tips' : ''}
           >
             <Video className="w-5 h-5" />
-            <span className="font-semibold text-[#FFD54F]">Video Tips</span>
+            {!sidebarCollapsed && <span className="font-semibold text-[#FFD54F]">Video Tips</span>}
           </button>
         </nav>
-        <div className="p-6 border-t border-gray-200/50 relative">
-          <div className="glass-badge text-center py-3 px-4 rounded-xl">
-            <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
-          </div>
+        {!sidebarCollapsed && (
+          <div className="p-6 border-t border-gray-200/50 relative">
+            <div className="glass-badge text-center py-3 px-4 rounded-xl">
+              <p className="text-xs font-bold bg-gradient-to-r from-[#7CB342] to-[#42A5F5] bg-clip-text text-transparent">Powered by AI</p>
+            </div>
           <svg className="bee-trail-decoration" width="240" height="600" viewBox="0 0 240 600" xmlns="http://www.w3.org/2000/svg">
             <g className="bee-trail-path">
               <circle cx="30" cy="560" r="3" fill="#FFD54F" opacity="0.3" className="trail-dot" />
@@ -586,7 +597,8 @@ function App() {
               <path d="M 3 -18 Q 3 -22, 1 -22" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" />
             </g>
           </svg>
-        </div>
+          </div>
+        )}
       </aside>
       <main className="flex-1 overflow-auto">
         <div className="max-w-7xl mx-auto px-8 py-8">
