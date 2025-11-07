@@ -208,6 +208,17 @@
     animation: flapWingRight 0.15s ease-in-out infinite;
   }
 
+  .trail-dot {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .trail-dot:nth-child(odd) {
+    animation-delay: 0.3s;
+  }
+
+  .trail-dot:nth-child(even) {
+    animation-delay: 0.6s;
+  }
 
   @keyframes beeHover {
     0%, 100% {
@@ -236,6 +247,16 @@
     }
   }
 
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+  }
 }
 
 @keyframes btnBounce {
