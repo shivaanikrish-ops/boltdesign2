@@ -13,6 +13,8 @@ interface ScheduledPostsListProps {
 
 export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate, onEdit, onDelete, onSetAlarm }: ScheduledPostsListProps) {
   const [isExpanded, setIsExpanded] = useState(true);
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
+  const [editedContent, setEditedContent] = useState({ title: '', caption: '' });
   const platformIcons = {
     instagram: Instagram,
     twitter: Twitter,
@@ -126,6 +128,7 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
             <div className="space-y-4">
               {sortedPosts.map(post => {
           const StatusIcon = statusConfig[post.status].icon;
+          const isEditing = editingPostId === post.id;
           return (
             <div
               key={post.id}
@@ -134,14 +137,32 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
-                    <h4 className="font-semibold text-gray-800 truncate">{post.title}</h4>
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        value={editedContent.title}
+                        onChange={(e) => setEditedContent({ ...editedContent, title: e.target.value })}
+                        className="flex-1 font-semibold text-gray-800 border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-[#7CB342]"
+                      />
+                    ) : (
+                      <h4 className="font-semibold text-gray-800 truncate">{post.title}</h4>
+                    )}
                     <span className={`px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${statusConfig[post.status].color}`}>
                       <StatusIcon className="w-3 h-3" />
                       {statusConfig[post.status].label}
                     </span>
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.caption}</p>
+                  {isEditing ? (
+                    <textarea
+                      value={editedContent.caption}
+                      onChange={(e) => setEditedContent({ ...editedContent, caption: e.target.value })}
+                      className="w-full text-sm text-gray-600 border border-gray-300 rounded px-2 py-1 mb-3 focus:outline-none focus:border-[#7CB342]"
+                      rows={3}
+                    />
+                  ) : (
+                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">{post.caption}</p>
+                  )}
 
                   <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
                     <div className="flex items-center gap-1">
@@ -180,27 +201,54 @@ export function ScheduledPostsList({ scheduledPosts, plannedPosts, selectedDate,
                 </div>
 
                 <div className="flex gap-2 flex-shrink-0">
-                  <button
-                    onClick={() => onSetAlarm(post)}
-                    className="p-2 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors"
-                    title="Set alarm for this post"
-                  >
-                    <Bell className="w-4 h-4 text-orange-600" />
-                  </button>
-                  <button
-                    onClick={() => onEdit(post)}
-                    className="p-2 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
-                    title="Edit post"
-                  >
-                    <Edit className="w-4 h-4 text-blue-600" />
-                  </button>
-                  <button
-                    onClick={() => onDelete(post.id, post.type)}
-                    className="p-2 bg-red-50 hover:bg-red-100 rounded-lg transition-colors"
-                    title="Delete post"
-                  >
-                    <Trash2 className="w-4 h-4 text-red-600" />
-                  </button>
+                  {isEditing ? (
+                    <>
+                      <button
+                        onClick={() => {
+                          onEdit({ ...post, title: editedContent.title, caption: editedContent.caption });
+                          setEditingPostId(null);
+                        }}
+                        className="p-2 bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
+                        title="Save changes"
+                      >
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                      </button>
+                      <button
+                        onClick={() => setEditingPostId(null)}
+                        className="p-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors"
+                        title="Cancel"
+                      >
+                        <AlertCircle className="w-4 h-4 text-gray-600" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => onSetAlarm(post)}
+                        className="p-2 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors"
+                        title="Set alarm for this post"
+                      >
+                        <Bell className="w-4 h-4 text-orange-600" />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setEditingPostId(post.id);
+                          setEditedContent({ title: post.title, caption: post.caption });
+                        }}
+                        className="p-2 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
+                        title="Edit post"
+                      >
+                        <Edit className="w-4 h-4 text-blue-600" />
+                      </button>
+                      <button
+                        onClick={() => onDelete(post.id, post.type)}
+                        className="p-2 bg-red-50 hover:bg-red-100 rounded-lg transition-colors"
+                        title="Delete post"
+                      >
+                        <Trash2 className="w-4 h-4 text-red-600" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
