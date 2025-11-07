@@ -1,30 +1,75 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Honey jar lid -->
-  <path d="M25 8 C25 8 25 6 26 5 L74 5 C75 6 75 8 75 8 L75 12 C75 13 74 14 73 14 L27 14 C26 14 25 13 25 12 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+    .hive-icon { animation: float 3s ease-in-out infinite; transform-origin: center; }
+    .bee-icon { animation: float 3s ease-in-out infinite 0.5s, wiggle 2s ease-in-out infinite; transform-origin: center; }
+  </style>
 
-  <!-- Jar opening -->
-  <path d="M23 14 C23 13 24 12 25 12 L75 12 C76 12 77 13 77 14 L77 18 C77 18 76 19 75 19 L25 19 C24 19 23 18 23 18 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
+  <g class="hive-icon">
+    <!-- Hive top dome -->
+    <path d="M30 20 Q30 10 50 10 Q70 10 70 20" fill="#C5E1A5" stroke="#7CB342" stroke-width="2"/>
 
-  <!-- Main jar body -->
-  <path d="M23 18 L26 22 C26 22 26 70 26 70 C26 73 28 75 31 75 L69 75 C72 75 74 73 74 70 L74 22 L77 18 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="2"/>
+    <!-- Hive arch layers -->
+    <path d="M30 20 L33 26 Q50 24 67 26 L70 20 Z" fill="#A5D6A7" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M33 26 L36 32 Q50 30 64 32 L67 26 Z" fill="#81C784" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M36 32 L39 38 Q50 36 61 38 L64 32 Z" fill="#66BB6A" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M39 38 L41 44 Q50 42 59 44 L61 38 Z" fill="#4CAF50" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M41 44 L43 50 Q50 48 57 50 L59 44 Z" fill="#66BB6A" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M43 50 L45 56 Q50 54 55 56 L57 50 Z" fill="#81C784" stroke="#7CB342" stroke-width="1.5"/>
+    <path d="M45 56 L47 62 Q50 60 53 62 L55 56 Z" fill="#A5D6A7" stroke="#7CB342" stroke-width="1.5"/>
 
-  <!-- Honey drip -->
-  <path d="M35 19 C35 19 34 21 34 22 C34 23 34 25 34 26 C34 27 36 28 37 28 C37 28 37 22 37 22" fill="#F9A825"/>
+    <!-- Hive entrance -->
+    <ellipse cx="50" cy="50" rx="6" ry="8" fill="#5D4037"/>
+    <ellipse cx="50" cy="49" rx="5" ry="6" fill="#3E2723"/>
 
-  <!-- Honeycomb hexagons -->
-  <g transform="translate(50, 45) scale(0.6)">
-    <path d="M0,-10 L9,-5 L9,5 L0,10 L-9,5 L-9,-5 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
-    <path d="M0,-30 L9,-25 L9,-15 L0,-10 L-9,-15 L-9,-25 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
-    <path d="M-15,5 L-6,10 L-6,20 L-15,25 L-24,20 L-24,10 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
-    <path d="M15,5 L24,10 L24,20 L15,25 L6,20 L6,10 Z" fill="none" stroke="#FFA726" stroke-width="2"/>
+    <!-- Honeycomb pattern -->
+    <g opacity="0.4">
+      <g transform="translate(42, 32) scale(0.5)">
+        <path d="M0,-4 L3,-2 L3,2 L0,4 L-3,2 L-3,-2 Z" fill="#FFA726" stroke="#F57C00" stroke-width="1"/>
+      </g>
+      <g transform="translate(50, 32) scale(0.5)">
+        <path d="M0,-4 L3,-2 L3,2 L0,4 L-3,2 L-3,-2 Z" fill="#FFA726" stroke="#F57C00" stroke-width="1"/>
+      </g>
+      <g transform="translate(58, 32) scale(0.5)">
+        <path d="M0,-4 L3,-2 L3,2 L0,4 L-3,2 L-3,-2 Z" fill="#FFA726" stroke="#F57C00" stroke-width="1"/>
+      </g>
+    </g>
   </g>
 
   <!-- Bee -->
-  <g transform="translate(72, 25)">
-    <ellipse cx="0" cy="0" rx="8" ry="10" fill="#FFA726"/>
-    <rect x="-8" y="-3" width="16" height="2" rx="1" fill="#5D4037"/>
-    <rect x="-8" y="2" width="16" height="2" rx="1" fill="#5D4037"/>
-    <ellipse cx="-5" cy="-6" rx="6" ry="8" fill="#FFE082" opacity="0.7" transform="rotate(-20 -5 -6)"/>
-    <ellipse cx="5" cy="-6" rx="6" ry="8" fill="#FFE082" opacity="0.7" transform="rotate(20 5 -6)"/>
+  <g class="bee-icon" transform="translate(78, 30)">
+    <!-- Bee wings -->
+    <ellipse cx="-3" cy="-4" rx="5" ry="7" fill="#FFE082" opacity="0.8" transform="rotate(-20 -3 -4)"/>
+    <ellipse cx="9" cy="-4" rx="5" ry="7" fill="#FFE082" opacity="0.8" transform="rotate(20 9 -4)"/>
+
+    <!-- Bee body -->
+    <ellipse cx="3" cy="3" rx="7" ry="9" fill="#FFD54F"/>
+
+    <!-- Bee stripes -->
+    <ellipse cx="3" cy="0" rx="6.5" ry="2" fill="#5D4037"/>
+    <ellipse cx="3" cy="6" rx="6.5" ry="2" fill="#5D4037"/>
+
+    <!-- Bee head -->
+    <circle cx="3" cy="-5" r="4" fill="#FFA726"/>
+
+    <!-- Bee eyes -->
+    <circle cx="2" cy="-5.5" r="1" fill="#3E2723"/>
+    <circle cx="4.5" cy="-5.5" r="1" fill="#3E2723"/>
+    <circle cx="2" cy="-5.5" r="0.4" fill="white"/>
+    <circle cx="4.5" cy="-5.5" r="0.4" fill="white"/>
+
+    <!-- Bee antenna -->
+    <line x1="2" y1="-8" x2="1" y2="-10" stroke="#5D4037" stroke-width="1" stroke-linecap="round"/>
+    <circle cx="1" cy="-10.5" r="1" fill="#5D4037"/>
+    <line x1="4" y1="-8" x2="5" y2="-10" stroke="#5D4037" stroke-width="1" stroke-linecap="round"/>
+    <circle cx="5" cy="-10.5" r="1" fill="#5D4037"/>
   </g>
 </svg>

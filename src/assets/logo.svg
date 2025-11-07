@@ -1,53 +1,105 @@
 <svg width="600" height="450" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Honey jar lid -->
-  <path d="M242 30 C242 30 242 25 245 22 L355 22 C358 25 358 30 358 30 L358 50 C358 55 353 60 348 60 L252 60 C247 60 242 55 242 50 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+    .hive { animation: float 3s ease-in-out infinite; transform-origin: center; }
+    .bee { animation: float 3s ease-in-out infinite 0.5s, wiggle 2s ease-in-out infinite; transform-origin: center; }
+  </style>
 
-  <!-- Jar opening -->
-  <path d="M235 60 C235 55 240 50 245 50 L355 50 C360 50 365 55 365 60 L365 80 C365 80 360 85 355 85 L245 85 C240 85 235 80 235 80 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
+  <g class="hive">
+    <!-- Hive top dome -->
+    <path d="M220 60 Q220 20 300 20 Q380 20 380 60" fill="#C5E1A5" stroke="#7CB342" stroke-width="6"/>
 
-  <!-- Main jar body -->
-  <path d="M235 80 L245 95 C245 95 245 280 245 280 C245 290 253 298 263 298 L337 298 C347 298 355 290 355 280 L355 95 L365 80 Z" fill="#FFF9C4" stroke="#7CB342" stroke-width="6"/>
+    <!-- Hive arch layers -->
+    <path d="M220 60 L230 80 Q300 75 370 80 L380 60 Z" fill="#A5D6A7" stroke="#7CB342" stroke-width="4"/>
+    <path d="M230 80 L240 100 Q300 95 360 100 L370 80 Z" fill="#81C784" stroke="#7CB342" stroke-width="4"/>
+    <path d="M240 100 L250 120 Q300 115 350 120 L360 100 Z" fill="#66BB6A" stroke="#7CB342" stroke-width="4"/>
+    <path d="M250 120 L255 140 Q300 135 345 140 L350 120 Z" fill="#4CAF50" stroke="#7CB342" stroke-width="4"/>
+    <path d="M255 140 L260 160 Q300 155 340 160 L345 140 Z" fill="#66BB6A" stroke="#7CB342" stroke-width="4"/>
+    <path d="M260 160 L265 180 Q300 175 335 180 L340 160 Z" fill="#81C784" stroke="#7CB342" stroke-width="4"/>
+    <path d="M265 180 L270 200 Q300 195 330 200 L335 180 Z" fill="#A5D6A7" stroke="#7CB342" stroke-width="4"/>
+    <path d="M270 200 L275 220 Q300 215 325 220 L330 200 Z" fill="#C5E1A5" stroke="#7CB342" stroke-width="4"/>
 
-  <!-- Honey drip left -->
-  <path d="M260 85 C260 85 258 90 258 95 C258 100 258 105 258 110 C258 115 263 118 268 118 C268 118 268 95 268 95" fill="#F9A825"/>
+    <!-- Hive entrance -->
+    <ellipse cx="300" cy="180" rx="25" ry="30" fill="#5D4037"/>
+    <ellipse cx="300" cy="175" rx="20" ry="22" fill="#3E2723"/>
 
-  <!-- Honey drip right -->
-  <path d="M340 85 C340 85 342 90 342 95 C342 100 342 105 342 110 C342 115 337 118 332 118 C332 118 332 95 332 95" fill="#F9A825"/>
+    <!-- Honeycomb pattern on hive -->
+    <g opacity="0.4">
+      <g transform="translate(260, 100)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(280, 100)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(300, 100)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(320, 100)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(340, 100)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
 
-  <!-- Honeycomb hexagons in jar -->
-  <g transform="translate(280, 170)">
-    <!-- Center hexagon -->
-    <path d="M0,-15 L13,-7.5 L13,7.5 L0,15 L-13,7.5 L-13,-7.5 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
-    <!-- Top hexagon -->
-    <path d="M0,-45 L13,-37.5 L13,-22.5 L0,-15 L-13,-22.5 L-13,-37.5 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
-    <!-- Bottom left hexagon -->
-    <path d="M-22.5,7.5 L-9.5,15 L-9.5,30 L-22.5,37.5 L-35.5,30 L-35.5,15 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
-    <!-- Bottom right hexagon -->
-    <path d="M22.5,7.5 L35.5,15 L35.5,30 L22.5,37.5 L9.5,30 L9.5,15 Z" fill="none" stroke="#FFA726" stroke-width="4"/>
+      <g transform="translate(270, 115)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(290, 115)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(310, 115)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+      <g transform="translate(330, 115)">
+        <path d="M0,-8 L7,-4 L7,4 L0,8 L-7,4 L-7,-4 Z" fill="#FFA726" stroke="#F57C00" stroke-width="2"/>
+      </g>
+    </g>
   </g>
 
-  <!-- Bee body -->
-  <ellipse cx="450" cy="135" rx="28" ry="35" fill="#FFA726"/>
+  <g class="bee" transform="translate(420, 120)">
+    <!-- Bee wings -->
+    <ellipse cx="-5" cy="-10" rx="22" ry="28" fill="#FFE082" opacity="0.8" transform="rotate(-20 -5 -10)"/>
+    <ellipse cx="35" cy="-10" rx="22" ry="28" fill="#FFE082" opacity="0.8" transform="rotate(20 35 -10)"/>
 
-  <!-- Bee stripes -->
-  <rect x="422" y="125" width="56" height="8" rx="4" fill="#5D4037"/>
-  <rect x="422" y="145" width="56" height="8" rx="4" fill="#5D4037"/>
+    <!-- Bee body -->
+    <ellipse cx="15" cy="15" rx="28" ry="35" fill="#FFD54F"/>
 
-  <!-- Bee wings -->
-  <ellipse cx="435" cy="115" rx="22" ry="28" fill="#FFE082" opacity="0.7" transform="rotate(-20 435 115)"/>
-  <ellipse cx="465" cy="115" rx="22" ry="28" fill="#FFE082" opacity="0.7" transform="rotate(20 465 115)"/>
+    <!-- Bee stripes -->
+    <ellipse cx="15" cy="5" rx="26" ry="8" fill="#5D4037"/>
+    <ellipse cx="15" cy="25" rx="26" ry="8" fill="#5D4037"/>
 
-  <!-- Bee antenna left -->
-  <line x1="440" y1="100" x2="435" y2="85" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="435" cy="82" r="4" fill="#5D4037"/>
+    <!-- Bee head -->
+    <circle cx="15" cy="-12" r="15" fill="#FFA726"/>
 
-  <!-- Bee antenna right -->
-  <line x1="460" y1="100" x2="465" y2="85" stroke="#5D4037" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="465" cy="82" r="4" fill="#5D4037"/>
+    <!-- Bee eyes -->
+    <ellipse cx="10" cy="-14" rx="4" ry="6" fill="#3E2723"/>
+    <ellipse cx="20" cy="-14" rx="4" ry="6" fill="#3E2723"/>
+    <circle cx="10" cy="-13" r="2" fill="white"/>
+    <circle cx="20" cy="-13" r="2" fill="white"/>
+
+    <!-- Bee antenna left -->
+    <line x1="10" y1="-20" x2="5" y2="-30" stroke="#5D4037" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="5" cy="-32" r="3" fill="#5D4037"/>
+
+    <!-- Bee antenna right -->
+    <line x1="20" y1="-20" x2="25" y2="-30" stroke="#5D4037" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="25" cy="-32" r="3" fill="#5D4037"/>
+
+    <!-- Bee stinger -->
+    <path d="M15,45 L12,55 L15,54 L18,55 Z" fill="#5D4037"/>
+  </g>
 
   <!-- Text: CONTENT HIVE -->
-  <text x="300" y="370" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
+  <text x="300" y="320" font-family="Arial, sans-serif" font-size="52" font-weight="800" text-anchor="middle" fill="#C5E1A5" letter-spacing="8">CONTENT HIVE</text>
 
   <!-- Subtitle -->
-  <text x="300" y="410" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
+  <text x="300" y="360" font-family="Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle" fill="#9E9E9E" letter-spacing="6">CREATE BUZZ-WORTHY CONTENT WITH AI</text>
 </svg>
