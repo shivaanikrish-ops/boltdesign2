@@ -62,14 +62,14 @@ export function CaptionSelector({ content, onSelectTone }: CaptionSelectorProps)
                 </div>
               )}
             </div>
-            <p className="text-xs text-gray-500 text-left">{description}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-300 text-left">{description}</p>
           </button>
         ))}
       </div>
 
-      <div className="card-float p-5 bg-gradient-to-br from-gray-50 to-blue-50">
-        <h3 className="font-semibold text-gray-700 mb-3 text-sm">📝 Preview Caption</h3>
-        <p className="text-gray-800 text-sm leading-relaxed whitespace-pre-wrap">
+      <div className="card-float p-5 bg-gradient-to-br from-gray-50 to-blue-50 dark:bg-gray-700">
+        <h3 className="font-semibold text-gray-700 dark:text-white mb-3 text-sm">📝 Preview Caption</h3>
+        <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed whitespace-pre-wrap">
           {content[selectedTone]}
         </p>
       </div>

@@ -177,26 +177,26 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={previousPeriod}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
         </button>
-        <h3 className="text-lg font-semibold text-gray-800">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
           {view === 'month'
             ? `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`
             : `Week of ${monthNames[days[0].getMonth()]} ${days[0].getDate()}, ${days[0].getFullYear()}`}
         </h3>
         <button
           onClick={nextPeriod}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
+          <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-2 mb-2">
         {dayNames.map(day => (
-          <div key={day} className="text-center text-xs font-semibold text-gray-500 py-2">
+          <div key={day} className="text-center text-xs font-semibold text-gray-500 dark:text-gray-300 py-2">
             {day}
           </div>
         ))}
@@ -255,7 +255,7 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
                       </button>
                     ))}
                     {posts.length > 3 && (
-                      <span className="text-xs text-gray-500 font-medium">
+                      <span className="text-xs text-gray-500 dark:text-gray-300 font-medium">
                         +{posts.length - 3}
                       </span>
                     )}

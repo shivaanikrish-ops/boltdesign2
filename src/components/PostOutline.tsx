@@ -25,7 +25,7 @@ export function PostOutline({ outline }: PostOutlineProps) {
           <h2 className="text-2xl font-bold text-[#3C3C3C] dark:text-white">Post Structure Outline</h2>
         </div>
       </div>
-      <p className="text-base text-gray-600 mb-6">Optimized content strategy for maximum engagement</p>
+      <p className="text-base text-gray-600 dark:text-gray-300 mb-6">Optimized content strategy for maximum engagement</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="space-y-3">
@@ -102,8 +102,8 @@ export function PostOutline({ outline }: PostOutlineProps) {
         </div>
       </div>
 
-      <div className="mt-4 p-3 bg-gradient-to-r from-yellow-50 via-amber-50 to-orange-50 rounded-xl border border-yellow-200">
-        <p className="text-sm text-gray-700">
+      <div className="mt-4 p-3 bg-gradient-to-r from-yellow-50 via-amber-50 to-orange-50 dark:bg-gray-700 rounded-xl border border-yellow-200 dark:border-gray-600">
+        <p className="text-sm text-gray-700 dark:text-gray-200">
           <strong>📊 Engagement Tip:</strong> Posts that follow this structure typically see 2-3x higher
           engagement rates. Start with a strong hook, deliver value, and always include a clear call-to-action.
         </p>

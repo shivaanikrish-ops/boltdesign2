@@ -206,7 +206,7 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                    <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-2">
                       <div className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
                         <span>{formatDateTime(alarm.alarm_datetime)}</span>
@@ -218,7 +218,7 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
                     </div>
 
                     {alarm.notes && (
-                      <p className="text-xs text-gray-500 mt-2 italic">{alarm.notes}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-300 mt-2 italic">{alarm.notes}</p>
                     )}
                   </div>
 

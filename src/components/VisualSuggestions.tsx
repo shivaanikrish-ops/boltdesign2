@@ -24,7 +24,7 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
           <h2 className="text-xl font-bold gradient-text">AI Visual Suggestions</h2>
         </div>
       </div>
-      <p className="text-sm text-gray-500 mb-6">Generate images with these prompts in your favorite AI tool</p>
+      <p className="text-sm text-gray-500 dark:text-gray-300 mb-6">Generate images with these prompts in your favorite AI tool</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {suggestions.map((suggestion, index) => (
@@ -103,8 +103,8 @@ export function VisualSuggestions({ suggestions }: VisualSuggestionsProps) {
         ))}
       </div>
 
-      <div className="mt-4 p-4 bg-gradient-to-r from-pink-50 via-orange-50 to-yellow-50 rounded-xl border border-pink-200">
-        <p className="text-xs text-gray-700">
+      <div className="mt-4 p-4 bg-gradient-to-r from-pink-50 via-orange-50 to-yellow-50 dark:bg-gray-700 rounded-xl border border-pink-200 dark:border-gray-600">
+        <p className="text-xs text-gray-700 dark:text-gray-200">
           <strong>💡 Pro Tip:</strong> Use these prompts with AI image generators like DALL-E, Midjourney,
           Stable Diffusion, or Leonardo.ai to create custom visuals perfectly matched to your campaign.
         </p>

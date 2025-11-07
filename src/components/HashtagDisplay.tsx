@@ -114,7 +114,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
               Add
             </button>
           </div>
-          <p className="text-xs text-gray-600 mt-2">
+          <p className="text-xs text-gray-600 dark:text-gray-300 mt-2">
             💡 Tip: You can add tags with or without the # symbol. Press Enter to add.
           </p>
         </div>
@@ -124,7 +124,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
         {editedHashtags.map((tag, index) => (
           <div
             key={index}
-            className={`group relative px-3 py-1.5 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 text-blue-700 rounded-xl text-xs font-medium border border-blue-200 transition-all hover:shadow-md hover:-translate-y-0.5 ${
+            className={`group relative px-3 py-1.5 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 dark:bg-[#263B4D] text-blue-700 dark:text-blue-300 rounded-xl text-xs font-medium border border-blue-200 dark:border-blue-500 transition-all hover:shadow-md hover:-translate-y-0.5 ${
               isEditing && onHashtagsChange ? 'pr-8' : ''
             }`}
           >
@@ -143,7 +143,7 @@ export function HashtagDisplay({ hashtags, onHashtagsChange }: HashtagDisplayPro
       </div>
 
       {editedHashtags.length === 0 && (
-        <p className="text-gray-500 text-center py-4">
+        <p className="text-gray-500 dark:text-gray-300 text-center py-4">
           No hashtags yet. Click "Add" to create your first hashtag.
         </p>
       )}
