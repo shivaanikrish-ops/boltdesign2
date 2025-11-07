@@ -217,8 +217,6 @@ function App() {
 
       const outline = generatePostOutline(fullDescription, brandProfile?.tone || 'casual', brandProfile);
       setPostOutline(outline);
-
-      await saveContentToHistory(fullDescription, content, uploadedImageUrl, resized as ResizedImages | undefined);
     } catch (error) {
       console.error('Error generating content:', error);
       setGeneratedContent(null);
