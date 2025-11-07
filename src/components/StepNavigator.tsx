@@ -60,8 +60,8 @@ export function StepNavigator({ currentStep, onStepClick, canNavigate }: StepNav
         ))}
       </div>
       <div className="text-center mt-6 relative">
-        <div className="inline-block bg-gradient-to-r from-[#7CB342] via-[#FFD54F] to-[#42A5F5] p-4 rounded-2xl shadow-2xl">
-          <p className="text-lg font-black tracking-wide text-white drop-shadow-lg transform hover:scale-105 transition-transform">
+        <div className="inline-block bg-[#FFD54F] px-4 py-2 rounded-lg shadow-md">
+          <p className="text-sm font-semibold text-gray-800">
             ✨ PRESS THE NUMBERS TO NAVIGATE BACK OR FORTH ✨
           </p>
         </div>
