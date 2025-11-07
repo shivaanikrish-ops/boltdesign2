@@ -12,7 +12,7 @@ interface AlarmManagerProps {
 export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm }: AlarmManagerProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [triggeredAlarms, setTriggeredAlarms] = useState<Set<string>>(new Set());
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
   const notificationPermission = useRef<NotificationPermission>('default');
 
   useEffect(() => {
@@ -33,41 +33,50 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
       }
     }
 
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    oscillator.frequency.value = 800;
-    oscillator.type = 'sine';
-    gainNode.gain.value = 0;
-
-    oscillator.start();
-
-    audioRef.current = {
-      play: () => {
-        const beepDuration = 200;
-        const pauseDuration = 100;
-        const totalDuration = 5000;
-        const cycleTime = beepDuration + pauseDuration;
-        const repeats = Math.floor(totalDuration / cycleTime);
-
-        for (let i = 0; i < repeats; i++) {
-          setTimeout(() => {
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + beepDuration / 1000);
-          }, i * cycleTime);
-        }
-      }
-    } as any;
+    audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
 
     return () => {
-      oscillator.stop();
-      audioContext.close();
+      if (audioContextRef.current) {
+        audioContextRef.current.close();
+      }
     };
   }, []);
+
+  const playAlarmSound = async () => {
+    if (!audioContextRef.current) return;
+
+    const audioContext = audioContextRef.current;
+
+    if (audioContext.state === 'suspended') {
+      await audioContext.resume();
+    }
+
+    const beepDuration = 0.2;
+    const pauseDuration = 0.1;
+    const totalDuration = 5;
+    const cycleTime = beepDuration + pauseDuration;
+    const repeats = Math.floor(totalDuration / cycleTime);
+
+    for (let i = 0; i < repeats; i++) {
+      const startTime = audioContext.currentTime + (i * cycleTime);
+
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.frequency.value = 800;
+      oscillator.type = 'sine';
+
+      gainNode.gain.setValueAtTime(0, startTime);
+      gainNode.gain.linearRampToValueAtTime(0.3, startTime + 0.01);
+      gainNode.gain.linearRampToValueAtTime(0, startTime + beepDuration);
+
+      oscillator.start(startTime);
+      oscillator.stop(startTime + beepDuration);
+    }
+  };
 
   useEffect(() => {
     alarms.forEach((alarm) => {
@@ -84,8 +93,8 @@ export function AlarmManager({ alarms, onAddAlarm, onDeleteAlarm, onDismissAlarm
   }, [currentTime, alarms, triggeredAlarms]);
 
   const triggerAlarm = (alarm: Alarm) => {
-    if (alarm.sound_enabled && audioRef.current) {
-      audioRef.current.play();
+    if (alarm.sound_enabled) {
+      playAlarmSound();
     }
 
     if (alarm.notification_enabled) {
