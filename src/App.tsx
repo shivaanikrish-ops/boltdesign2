@@ -830,12 +830,22 @@ function App() {
             <ContentStrategySection
               onOpenPlanGenerator={() => setShowPlanGenerator(true)}
               onOpenSmartPlanner={() => setShowSmartPlanner(true)}
-              generatedPlans={contentPlans.map(plan => ({
-                id: plan.id,
-                topics: plan.topics || [],
-                schedule: plan.schedule || [],
-                insights: plan.insights || []
-              }))}
+              generatedPlans={contentPlans.map(plan => {
+                const planPosts = plannedPosts.filter(p => p.content_plan_id === plan.id);
+                return {
+                  id: plan.id,
+                  topics: planPosts.map(p => p.title),
+                  schedule: planPosts.map(p => ({
+                    date: new Date(p.suggested_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    topic: p.title
+                  })),
+                  insights: [
+                    `${plan.plan_name} - ${plan.frequency}`,
+                    `${plan.total_posts} posts planned from ${new Date(plan.start_date).toLocaleDateString()} to ${new Date(plan.end_date).toLocaleDateString()}`,
+                    `Status: ${plan.status}`
+                  ]
+                };
+              })}
             />
           </>
         ) : currentView === 'video' ? (
