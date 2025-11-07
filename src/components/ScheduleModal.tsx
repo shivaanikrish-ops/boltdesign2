@@ -81,13 +81,13 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-gray-500 dark:text-gray-300" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
               Post Title *
             </label>
             <input
@@ -96,14 +96,14 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., Summer Sale Launch Post"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+              <label htmlFor="date" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 flex items-center gap-2">
                 <CalendarIcon className="w-4 h-4" />
                 Date *
               </label>
@@ -114,12 +114,12 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
                 min={getMinDate()}
                 value={scheduledDate}
                 onChange={(e) => setScheduledDate(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
             <div>
-              <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+              <label htmlFor="time" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 Time *
               </label>
@@ -129,13 +129,13 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
                 required
                 value={scheduledTime}
                 onChange={(e) => setScheduledTime(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-3">
               Target Platforms *
             </label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -156,7 +156,7 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
                     <div className={`w-10 h-10 bg-gradient-to-br ${platform.color} rounded-lg flex items-center justify-center mx-auto mb-2`}>
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-gray-700 dark:text-white">
                       {platform.name}
                     </span>
                   </button>
@@ -166,7 +166,7 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
           </div>
 
           <div>
-            <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="notes" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
               Notes (Optional)
             </label>
             <textarea
@@ -183,7 +183,7 @@ export function ScheduleModal({ isOpen, onClose, onSchedule, prefilledData }: Sc
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-3 border border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Cancel
             </button>

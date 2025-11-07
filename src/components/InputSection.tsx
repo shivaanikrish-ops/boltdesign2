@@ -157,15 +157,15 @@ export function InputSection({ onGenerate, isGenerating }: InputSectionProps) {
             disabled={isGenerating}
           />
           {error && (
-            <div className="mt-2 flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded-2xl">
-              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700">{error}</p>
+            <div className="mt-2 flex items-start gap-2 p-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-2xl">
+              <AlertCircle className="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
             </div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-[#3C3C3C] mb-2">
+          <label className="block text-sm font-semibold text-[#3C3C3C] dark:text-gray-200 mb-2">
             Product Image (Optional)
           </label>
 

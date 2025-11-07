@@ -56,13 +56,13 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-5 h-5 text-gray-500 dark:text-gray-300" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
               Brand Name *
             </label>
             <input
@@ -71,13 +71,13 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., EcoBottle Co."
             />
           </div>
 
           <div>
-            <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="industry" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
               Industry
             </label>
             <input
@@ -85,13 +85,13 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
               type="text"
               value={industry}
               onChange={(e) => setIndustry(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., Sustainable Products, Tech, Fashion"
             />
           </div>
 
           <div>
-            <label htmlFor="tone" className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+            <label htmlFor="tone" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 flex items-center gap-2">
               <Palette className="w-4 h-4" />
               Default Brand Tone
             </label>
@@ -99,7 +99,7 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
               id="tone"
               value={tone}
               onChange={(e) => setTone(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="professional">Professional</option>
               <option value="casual">Casual & Friendly</option>
@@ -110,7 +110,7 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
           </div>
 
           <div>
-            <label htmlFor="audience" className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+            <label htmlFor="audience" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2 flex items-center gap-2">
               <Target className="w-4 h-4" />
               Target Audience
             </label>
@@ -125,7 +125,7 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
           </div>
 
           <div>
-            <label htmlFor="values" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="values" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
               Key Values & Keywords
             </label>
             <input
@@ -133,10 +133,10 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
               type="text"
               value={keyValues}
               onChange={(e) => setKeyValues(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., sustainability, innovation, quality (comma-separated)"
             />
-            <p className="mt-2 text-xs text-gray-500">
+            <p className="mt-2 text-xs text-gray-500 dark:text-gray-300">
               Separate keywords with commas. These will influence content generation.
             </p>
           </div>
@@ -145,7 +145,7 @@ export function BrandProfileModal({ isOpen, onClose, onSave, existingProfile }: 
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-6 py-3 border border-gray-300 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              className="flex-1 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl font-medium text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Cancel
             </button>
