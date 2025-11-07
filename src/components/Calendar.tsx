@@ -138,11 +138,11 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
   const days = view === 'month' ? getDaysInMonth(currentDate) : getWeekDays(currentDate);
 
   return (
-    <div className="bg-[#5ABA8A] rounded-2xl shadow-md p-6">
+    <div className="bg-[#EEF3F4] rounded-2xl shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#196E7F]">
-            <CalendarIcon className="w-5 h-5 text-[#196E7F]" />
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#99D852]">
+            <CalendarIcon className="w-5 h-5 text-[#99D852]" />
           </div>
           <h2 className="text-2xl font-bold text-[#3C3C3C]">Content Calendar</h2>
         </div>

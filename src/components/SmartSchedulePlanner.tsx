@@ -311,7 +311,7 @@ export function SmartSchedulePlanner({ isOpen, onClose, onGenerateSchedule }: Sm
             </button>
             <button
               onClick={handleGenerate}
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-3 bg-[#7CB342] text-white rounded-xl font-semibold hover:bg-[#6BA030] transition-all flex items-center justify-center gap-2"
             >
               <Sparkles className="w-4 h-4" />
               Generate Schedule
