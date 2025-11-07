@@ -63,7 +63,7 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
 
   return (
     <div className="card-float p-6 mb-6 animate-fade-in">
-      <div className="gradient-header-bg dark:bg-[#263B4D] mb-6 inline-block">
+      <div className="gradient-header-bg mb-6 inline-block">
         <h2 className="text-xl font-bold gradient-text">Platform Previews</h2>
       </div>
 
@@ -76,7 +76,7 @@ export function PlatformPreviews({ caption, hashtags, imageUrl }: PlatformPrevie
                 <div className={`w-7 h-7 bg-gradient-to-br ${platform.color} rounded-lg flex items-center justify-center shadow-sm`}>
                   <Icon className="w-3.5 h-3.5 text-white" />
                 </div>
-                <span className="font-semibold text-sm text-gray-800 dark:text-white">{platform.name}</span>
+                <span className="font-semibold text-sm text-gray-800">{platform.name}</span>
               </div>
 
               <div className={`${platform.bgColor} rounded-xl p-4 flex-1 border border-gray-200 card-float`}>

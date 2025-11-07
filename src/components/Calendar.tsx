@@ -138,20 +138,20 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
   const days = view === 'month' ? getDaysInMonth(currentDate) : getWeekDays(currentDate);
 
   return (
-    <div className="bg-[#EEF3F4] dark:bg-[#1B2433] rounded-2xl shadow-md p-6">
+    <div className="bg-[#5ABA8A] rounded-2xl shadow-md p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#99D852]">
-            <CalendarIcon className="w-5 h-5 text-[#99D852]" />
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#196E7F]">
+            <CalendarIcon className="w-5 h-5 text-[#196E7F]" />
           </div>
-          <h2 className="text-2xl font-bold text-[#3C3C3C] dark:text-white">Content Calendar</h2>
+          <h2 className="text-2xl font-bold text-[#3C3C3C]">Content Calendar</h2>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+          <div className="flex bg-gray-100 rounded-lg p-1">
             <button
               onClick={() => setView('month')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                view === 'month' ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'
+                view === 'month' ? 'bg-white text-gray-800 shadow-sm' : 'text-gray-600'
               }`}
             >
               Month
@@ -159,7 +159,7 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
             <button
               onClick={() => setView('week')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                view === 'week' ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'
+                view === 'week' ? 'bg-white text-gray-800 shadow-sm' : 'text-gray-600'
               }`}
             >
               Week
@@ -177,26 +177,26 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
       <div className="flex items-center justify-between mb-6">
         <button
           onClick={previousPeriod}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          <ChevronLeft className="w-5 h-5 text-gray-600" />
         </button>
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+        <h3 className="text-lg font-semibold text-gray-800">
           {view === 'month'
             ? `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`
             : `Week of ${monthNames[days[0].getMonth()]} ${days[0].getDate()}, ${days[0].getFullYear()}`}
         </h3>
         <button
           onClick={nextPeriod}
-          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          <ChevronRight className="w-5 h-5 text-gray-600" />
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-2 mb-2">
         {dayNames.map(day => (
-          <div key={day} className="text-center text-xs font-semibold text-gray-500 dark:text-gray-300 py-2">
+          <div key={day} className="text-center text-xs font-semibold text-gray-500 py-2">
             {day}
           </div>
         ))}
@@ -255,7 +255,7 @@ export function Calendar({ scheduledPosts, plannedPosts, onDateSelect, onPostCli
                       </button>
                     ))}
                     {posts.length > 3 && (
-                      <span className="text-xs text-gray-500 dark:text-gray-300 font-medium">
+                      <span className="text-xs text-gray-500 font-medium">
                         +{posts.length - 3}
                       </span>
                     )}

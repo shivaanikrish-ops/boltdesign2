@@ -99,43 +99,43 @@ export function AlarmModal({ isOpen, onClose, onCreateAlarm, linkedPost }: Alarm
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5 text-gray-500 dark:text-gray-300" />
+            <X className="w-5 h-5 text-gray-500" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Alarm Title
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
               placeholder="e.g., Post Product Launch"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Date & Time
             </label>
             <input
               type="datetime-local"
               value={alarmDatetime}
               onChange={(e) => setAlarmDatetime(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
               required
             />
-            <p className="text-xs text-gray-500 dark:text-gray-300 mt-1">
+            <p className="text-xs text-gray-500 mt-1">
               Select any future date and time for your alarm
             </p>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Notes (Optional)
             </label>
             <textarea
@@ -148,11 +148,11 @@ export function AlarmModal({ isOpen, onClose, onCreateAlarm, linkedPost }: Alarm
           </div>
 
           <div className="space-y-3">
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Alarm Options
             </label>
 
-            <div className="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
               <input
                 type="checkbox"
                 id="sound"
@@ -167,13 +167,13 @@ export function AlarmModal({ isOpen, onClose, onCreateAlarm, linkedPost }: Alarm
                   <VolumeX className="w-5 h-5 text-gray-400" />
                 )}
                 <div>
-                  <div className="font-medium text-gray-800 dark:text-white">Play Sound</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-300">Play a beep sound when alarm triggers</div>
+                  <div className="font-medium text-gray-800">Play Sound</div>
+                  <div className="text-xs text-gray-500">Play a beep sound when alarm triggers</div>
                 </div>
               </label>
             </div>
 
-            <div className="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
               <input
                 type="checkbox"
                 id="notification"
@@ -184,8 +184,8 @@ export function AlarmModal({ isOpen, onClose, onCreateAlarm, linkedPost }: Alarm
               <label htmlFor="notification" className="flex items-center gap-2 cursor-pointer flex-1">
                 <Bell className="w-5 h-5 text-orange-600" />
                 <div>
-                  <div className="font-medium text-gray-800 dark:text-white">Browser Notification</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-300">Show a browser notification (requires permission)</div>
+                  <div className="font-medium text-gray-800">Browser Notification</div>
+                  <div className="text-xs text-gray-500">Show a browser notification (requires permission)</div>
                 </div>
               </label>
             </div>
