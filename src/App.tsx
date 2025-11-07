@@ -89,8 +89,25 @@ function App() {
         const timeDiff = alarmTime.getTime() - now.getTime();
 
         if (timeDiff <= 0 && timeDiff > -5000) {
+          console.log('ALARM TRIGGERED:', alarm.title, alarm);
           setTriggeredAlarms((prev) => new Set(prev).add(alarm.id));
           setRingingAlarm(alarm);
+
+          if (alarm.sound_enabled) {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvHZiTYIGGe778edTgwOUKzn77RgGwU7k9n0yHMpBSh+zPLaizsKElyx6+yhUhELSpzh8bllHAUugdDx2YYzBxdqvO/InUwNDlOu6O+yXhoEOpTX88p0KQUngM3y2Ys5CRJbr+rspFURCkud4fG5ZBsCLYHQ8dqHMwcXa7vvyp1MDQ5Tr+jvsV0aBDuU1/PKcygFKIDN8tmKOQkSW6/q7KVVEQNMV+Dxu2QcBS+B0PHahzMHF2y878qdTA0OVK/o77BdGgQ7lNfzyn4pBSiAzfLZijkJEVuw6uylVhEDTVjh8bpjHAYugdDx2ocxBxZqvO/KnksODVKt6O+xXRoEO5TX88p+KAUogM3y2Yo4AxFbsOrspVYTAkxZ4fG6YhwFLoHQ8dmHMQcWarzuyp5KDw1Srujv');
+            audio.play().catch(e => console.log('Could not play sound:', e));
+          }
+
+          if (alarm.notification_enabled && 'Notification' in window) {
+            Notification.requestPermission().then(permission => {
+              if (permission === 'granted') {
+                new Notification('Alarm: ' + alarm.title, {
+                  body: alarm.notes || 'Your alarm is ringing!',
+                  icon: '/logo-icon.svg'
+                });
+              }
+            });
+          }
         }
       }
     });
@@ -519,6 +536,35 @@ function App() {
 
 
   return (
+    <>
+    {ringingAlarm && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center animate-pulse" style={{ zIndex: 99999 }}>
+        <div className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl animate-bounce">
+          <div className="flex flex-col items-center text-center">
+            <div className="relative mb-6">
+              <div className="absolute inset-0 bg-[#FFC107] rounded-full blur-xl opacity-50 animate-ping"></div>
+              <div className="relative w-24 h-24 bg-gradient-to-br from-[#FFD54F] to-[#FFC107] rounded-full flex items-center justify-center">
+                <Bell className="w-12 h-12 text-white" />
+              </div>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">ALARM!</h2>
+            <h3 className="text-2xl font-bold text-[#FFC107] mb-4">{ringingAlarm.title}</h3>
+
+            {ringingAlarm.notes && (
+              <p className="text-gray-600 mb-6">{ringingAlarm.notes}</p>
+            )}
+
+            <button
+              onClick={() => handleDismissAlarm(ringingAlarm.id)}
+              className="w-full px-8 py-4 bg-gradient-to-r from-[#FFD54F] to-[#FFC107] text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105"
+            >
+              Dismiss Alarm
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
     <div className="min-h-screen bg-[#FAFFF7] flex">
       <aside className={`bg-white/70 backdrop-blur-xl border-r border-gray-200/50 flex flex-col sidebar-glass relative overflow-hidden transition-all duration-300 ${sidebarCollapsed ? 'w-20' : 'w-60'}`}>
         <div className="p-6 border-b border-gray-200/50">
@@ -931,36 +977,8 @@ function App() {
           };
         })}
       />
-
-      {ringingAlarm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-pulse">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl animate-bounce">
-            <div className="flex flex-col items-center text-center">
-              <div className="relative mb-6">
-                <div className="absolute inset-0 bg-[#FFC107] rounded-full blur-xl opacity-50 animate-ping"></div>
-                <div className="relative w-24 h-24 bg-gradient-to-br from-[#FFD54F] to-[#FFC107] rounded-full flex items-center justify-center animate-wiggle">
-                  <Bell className="w-12 h-12 text-white animate-shake" />
-                </div>
-              </div>
-
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">ALARM!</h2>
-              <h3 className="text-2xl font-bold text-[#FFC107] mb-4">{ringingAlarm.title}</h3>
-
-              {ringingAlarm.notes && (
-                <p className="text-gray-600 mb-6">{ringingAlarm.notes}</p>
-              )}
-
-              <button
-                onClick={() => handleDismissAlarm(ringingAlarm.id)}
-                className="w-full px-8 py-4 bg-gradient-to-r from-[#FFD54F] to-[#FFC107] text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105"
-              >
-                Dismiss Alarm
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
+    </>
   );
 }
 
